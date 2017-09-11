@@ -5,10 +5,6 @@ Documentation     A test suite with a single test for buying Up/Down Rise/Fall c
 ...               the imported resource file.
 Resource          resource.robot
 
-*** Variables ***
-${profit_lost_evaluate}		0
-
-
 *** Keywords ***
 Verify login Success
     ${success}    Get Text    xpath=//*[@id="login-history-table"]/tbody/tr[1]/td[5]
