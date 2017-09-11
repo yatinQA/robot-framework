@@ -26,15 +26,10 @@ Set Chrome Options
 Chrome Headless
     ${chrome_options}=    Set Chrome Options
     Create Webdriver    Chrome    chrome_options=${chrome_options}
-    #${options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
-    #${options.set_binary}=  Set Variable  set_binary=/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary
-    #${options.add_argument}=  Set Variable  add_argument=--headless
-    #Create WebDriver  Chrome  chrome_options=${options}
 
 Open Browser To Login Page
     # Start Virtual Display 
-    #Open Browser    ${HOME URL}    ${BROWSER}
-    #open browser     ${HOME URL}   chrome
+    # Open Browser    ${HOME URL}    ${BROWSER}
     Chrome Headless
     Go To   ${HOME URL}
     Click Link	btn_login
@@ -66,13 +61,6 @@ Valid Login
     Submit Credentials
     Wait Until Page Contains	Portfolio   10
 
-Invalid Login
-    Open Browser To Login Page
-    Input Username	${VALID USER}
-    Input Password	Invalid Password
-    Submit Credentials
-    close browser
-
 Switch Virtual Account
     Sleep  10 
     Click Element	css=div.account-id
@@ -80,13 +68,4 @@ Switch Virtual Account
     Wait Until Page Contains	Portfolio   10
     
 
-Navigate to setting&security
-    Sleep  5
-    Click Element	css=div.account-id
-    Click Element	css=li.topMenuSecurity
-    Wait Until Page Contains	Security   5
 
-
-Scroll Page
-    [Arguments]    ${x_location}    ${y_location}
-    Execute JavaScript    window.scrollTo(${x_location},${y_location})
