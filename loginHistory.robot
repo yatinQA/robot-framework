@@ -18,9 +18,8 @@ Check Login History Page
     Invalid Login
     Valid Login
     Navigate to setting&security
-    sleep  10
-    Scroll Page                     0       790
-    click link                      xpath=//*[@id="settings_container"]/div/div[5]/div[2]/h4/a
+    wait until element is visible  xpath=//*[@id="settings_container"]/div/div[5]/div[2]/h4/a
+    click element                   xpath=//*[@id="settings_container"]/div/div[5]/div[1]/a
     Wait Until Element Is Visible	xpath=//*[@id="login_history-title"]/h1
     wait until element is visible   xpath=//*[@id='login-history-table']
     verify login success
