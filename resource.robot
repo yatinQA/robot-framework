@@ -41,7 +41,7 @@ Open Browser To Login Page
     Set Selenium Speed    ${DELAY}
     Login Page Should Be Open
 
-Login Page Should Be Open
+Login Page Should Be Op:qen
     Page Should Contain   Log in using your email address
 
 #Go To Login Page
