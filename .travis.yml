@@ -1,0 +1,38 @@
+sudo: required
+language: java
+dist: trusty
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+cache:
+  directories:
+  - $HOME/.m2
+      
+script: robot buy_contract.robot
+
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install chromium-chromedriver
+ - sudo python -m pip install robotframework
+ - sudo pip install --upgrade --pre robotframework-selenium2library
+ 
+before_script:
+  - "export PATH=$PATH:/usr/lib/chromium-browser/"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+  
+after_script:
+  - cat target/surefire-reports/TestSuite.txt
+  
+notifications:
+  email:
+    recipients:
+      - ehtesham@binary.com
+    on_success: never
+    on_failure: always

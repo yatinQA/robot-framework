@@ -5,7 +5,7 @@ Documentation     A resource file with reusable keywords and variables.
 ...               domain specific language. They utilize keywords provided
 ...               by the imported Selenium2Library.
 Library		  String
-Library           Selenium2Library
+Library           Selenium2Library 
 
 *** Variables ***
 ${BROWSER}        Chrome 
