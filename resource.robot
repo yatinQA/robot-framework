@@ -28,8 +28,8 @@ Chrome Headless
     Create Webdriver    Chrome    chrome_options=${chrome_options}
 
 Open Browser To Login Page
-    # Start Virtual Display 
-    # Open Browser    ${HOME URL}    ${BROWSER}
+    # Start Virtual Display
+    #Open Browser    ${HOME URL}    ${BROWSER}
     Chrome Headless
     Go To   ${HOME URL}
     Click Link	btn_login
@@ -38,10 +38,6 @@ Open Browser To Login Page
 
 Login Page Should Be Open
     Page Should Contain   Log in using your email address
-
-#Go To Login Page
-#    Go To    ${LOGIN URL}
-#    Login Page Should Be Open
 
 Input Username
     [Arguments]    ${username}
@@ -56,16 +52,29 @@ Submit Credentials
 
 Valid Login
     Open Browser To Login Page
-    Input Username	${VALID USER} 
+    Input Username	${VALID USER}
     Input Password	${VALID PASSWORD}
     Submit Credentials
     Wait Until Page Contains	Portfolio   10
 
+Invalid Login
+    Open Browser To Login Page
+    Input Username	${VALID USER}
+    Input Password	Invalid Password
+    Submit Credentials
+    close browser
+
 Switch Virtual Account
-    Sleep  10 
+    Sleep  10
     Click Element	css=div.account-id
     Click Element	css=div>a>li
     Wait Until Page Contains	Portfolio   10
-    
+
+
+Navigate to setting&security
+    Sleep  5
+    Click Element	css=div.account-id
+    Click Element	css=li.topMenuSecurity
+    Wait Until Page Contains	Security   5
 
 
