@@ -22,6 +22,9 @@ before_install:
  - sudo python -m pip install robotframework
  - sudo pip install --upgrade --pre robotframework-selenium2library
  
+before_script:
+  - "export PATH=$PATH:/usr/lib/chromium-browser/"
+  - "export DISPLAY=:99.0"
 
   
 after_script:
