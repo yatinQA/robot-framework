@@ -8,7 +8,9 @@ cache:
   directories:
   - $HOME/.m2
       
-script: robot buy_contract.robot
+script: 
+ - robot buy_contract.robot
+ - robot loginHistory.robot
 
 before_install:
  - sudo apt-get update
