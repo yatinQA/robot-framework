@@ -24,7 +24,7 @@ before_install:
  
 before_script:
   - "export PATH=$PATH:/usr/lib/chromium-browser/"
-  - "export DISPLAY=:99.0"
+
 
   
 after_script:
