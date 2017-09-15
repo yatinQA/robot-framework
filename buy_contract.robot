@@ -61,6 +61,6 @@ Trade Up Down
     Wait Until Element Is Visible	purchase_button_bottom	10	
     Click Element	purchase_button_bottom	
     Wait Until Page Contains	This contract	60
-    Capture Page Screenshot
+    Capture Page Screenshot   screenshots/contractbuy.png
     Verify Contract Result
     [Teardown]    Close Browser
