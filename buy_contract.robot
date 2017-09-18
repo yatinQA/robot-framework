@@ -59,6 +59,7 @@ Trade Up Down
     Sleep   3
     Select From List	id=duration_units	ticks
     Wait Until Element Is Visible	purchase_button_bottom	10	
+    Sleep   5
     Click Element	purchase_button_bottom	
     Wait Until Page Contains	This contract	60
     Capture Page Screenshot   screenshots/contractbuy.png
