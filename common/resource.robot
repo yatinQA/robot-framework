@@ -8,12 +8,27 @@ Library		  String
 Library           Selenium2Library 
 
 *** Variables ***
+#THESE ARE BROWSER VARIBALES
 ${BROWSER}        Chrome 
 ${DELAY}          0
 ${VALID USER}     munsei+cr@binary.com
 ${VALID PASSWORD}    Password1!
 ${HOME URL}      https://staging.binary.com/en/home.html
 @{chrome_arguments}	--disable-infobars    --headless    --disable-gpu
+
+#THESE ARE GLOBAL VARIABLES
+
+${MIN_INPUT}                     aaa
+${INV_INPUT}                     aaaaaaaaaa
+${VALID_PASS}                    Abcd12345
+${REQUIRED_FIELD_MSG}            This field is required.
+${CASHIER_LOCKED_MSG}            Your cashier is locked as per your request - to unlock it, please enter the password.
+${MIN_INPUT_MSG}                 You should enter 6-25 characters.
+${PASS_REQUIREMENT_MSG}          Password should have lower and uppercase letters with numbers.
+${UNMATCH_PASS_MSG}              The two passwords that you entered do not match.
+${DIFF_PASS_MSG}                 Please use a different password than your login password.
+${SUCCESS_MSG}                   Your settings have been updated successfully.
+${CHECK_LOCKED_CASHIER_MSG}      Your cashier is locked as per your request - to unlock it, please click here.
 
 *** Keywords ***
 Set Chrome Options
@@ -76,5 +91,16 @@ Navigate to setting&security
     Click Element	css=div.account-id
     Click Element	css=li.topMenuSecurity
     Wait Until Page Contains	Security   5
+
+Navigate to cashier page
+
+    click element                       xpath=//*[@id="topMenuCashier"]/a
+
+Navigate to cashier password page
+
+
+    Navigate to setting&security
+    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a/img
+    click element                   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a
 
 
