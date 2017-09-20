@@ -9,8 +9,7 @@ cache:
   - $HOME/.m2
       
 script: 
- - robot buy_contract.robot
- - robot loginHistory.robot
+ - robot testcases/*.robot
 
 before_install:
  - sudo apt-get update
@@ -32,6 +31,7 @@ after_script:
 notifications:
   email:
     recipients:
-      - ehtesham@binary.com
+      - munsei@binary.com
+      - ridho@binary.com
     on_success: never
     on_failure: always
