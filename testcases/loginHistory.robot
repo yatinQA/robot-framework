@@ -3,7 +3,7 @@ Documentation     A test suite with a single test for buying Up/Down Rise/Fall c
 ...
 ...               This test has a workflow that is created using keywords in
 ...               the imported resource file.
-Resource          resource.robot
+Resource          common/resource.robot
 
 *** Keywords ***
 Verify login Success

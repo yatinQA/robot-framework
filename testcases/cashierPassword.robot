@@ -4,7 +4,7 @@ Documentation     A test suite with a single test for checking cashier password 
 ...
 ...               This test has a workflow that is created using keywords in
 ...               the imported resource file.
-Resource          resource.robot
+Resource          common/resource.robot
 
 *** Variables ***
 ${MIN_INPUT}        aaa
