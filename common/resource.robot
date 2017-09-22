@@ -29,6 +29,9 @@ ${UNMATCH_PASS_MSG}              The two passwords that you entered do not match
 ${DIFF_PASS_MSG}                 Please use a different password than your login password.
 ${SUCCESS_MSG}                   Your settings have been updated successfully.
 ${CHECK_LOCKED_CASHIER_MSG}      Your cashier is locked as per your request - to unlock it, please click here.
+${SAME_PASSWORD_MSG}             Current password and New password cannot be the same.
+${INV_OLD_PASSWORD}              Old password is wrong.
+${SUCCESS_CHANGED_PASSWORD_MSG}  Your password has been changed. Please log in again.
 
 *** Keywords ***
 Set Chrome Options
@@ -72,6 +75,8 @@ Valid Login
     Submit Credentials
     Wait Until Page Contains	Portfolio   10
 
+
+
 Invalid Login
     Open Browser To Login Page
     Input Username	${VALID USER}
@@ -104,3 +109,8 @@ Navigate to cashier password page
     click element                   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a
 
 
+Navigate to change password
+
+    Navigate to setting&security
+    wait until element is visible   xpath=//*[@id="change_password"]/div[1]/a
+    click element                   xpath=//*[@id="change_password"]/div[1]/a
