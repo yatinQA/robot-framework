@@ -48,8 +48,8 @@ Chrome Headless
 Open Browser To Login Page
     # Start Virtual Display
 
-    #Open Browser    ${HOME URL}    ${BROWSER}
-    Chrome Headless
+    Open Browser    ${HOME URL}    ${BROWSER}
+    #Chrome Headless
     Go To   ${HOME URL}
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
