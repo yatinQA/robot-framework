@@ -81,7 +81,7 @@ Change Password to original password
     element text should be          xpath=//*[@id="msg_success"]                      ${SUCCESS_CHANGED_PASSWORD_MSG}
 
 *** Test Cases ***
-Check Cashier Page
+Check Changed Password Page
     Valid Login
     Navigate to change password
     verify the page is loaded successfuly
