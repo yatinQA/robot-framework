@@ -5,12 +5,20 @@ Documentation     A test suite with a single test for checking cashier password 
 ...               This test has a workflow that is created using keywords in
 ...               the imported resource file.
 Resource          ../common/resource.robot
+Resource          ../common/navigation.robot
 
 *** Variables ***
 
 
 
 *** Keywords ***
+Navigate to cashier password page
+
+    Navigate to setting&security
+    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a/img
+    click element                   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a
+
+
 Verify required fields
 
     ${unlock}=                run keyword and return status        element text should be         //*[@id="lockInfo"]        ${CASHIER_LOCKED_MSG}

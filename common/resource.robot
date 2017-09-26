@@ -48,8 +48,8 @@ Chrome Headless
 Open Browser To Login Page
     # Start Virtual Display
 
-    Open Browser    ${HOME URL}    ${BROWSER}
-    #Chrome Headless
+    #Open Browser    ${HOME URL}    ${BROWSER}
+    Chrome Headless
     Go To   ${HOME URL}
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
@@ -82,7 +82,6 @@ Valid Login
     Wait Until Page Contains	Portfolio   10
 
 
-
 Invalid Login
     Open Browser To Login Page
     Input Username	${VALID USER}
@@ -96,33 +95,15 @@ Switch Virtual Account
     Click Element	css=div>a>li
     Wait Until Page Contains	Portfolio   10
 
-
-Navigate to setting&security
-    Sleep  5
-    Click Element	css=div.account-id
-    Click Element	css=li.topMenuSecurity
-    Wait Until Page Contains	Security   5
-
-Navigate to cashier page
-
-    click element                       xpath=//*[@id="topMenuCashier"]/a
-
-Navigate to cashier password page
-
-    Navigate to setting&security
-    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a/img
-    click element                   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a
-
-Navigate to authorised page
-
-    Navigate to setting&security
-    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[7]/div[1]/a/img
-    click element                   xpath=//*[@id="settings_container"]/div/div[7]/div[1]/a
-
-Navigate to change password
-
-    Navigate to setting&security
-    wait until element is visible   xpath=//*[@id="change_password"]/div[1]/a
-    wait until element is visible   xpath=//*[@id="change_password"]/div[1]/a
-    click element                   xpath=//*[@id="change_password"]/div[1]/a
-
+Open xvfb browser then login
+    Open Browser    ${HOME URL}    ${BROWSER}
+    Go To   ${HOME URL}
+    Click Link	btn_login
+    Set Selenium Speed    ${DELAY}
+    Login Page Should Be Open
+    Input Username	${VALID USER}
+    Input Password	${VALID PASSWORD}
+    Submit Credentials
+    ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
+    run keyword if   ${GRANT}!=1    Grant Permission
+    Wait Until Page Contains	Portfolio   10
