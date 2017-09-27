@@ -124,3 +124,5 @@ Set Endpoint
     Input Text	 server_url    ${server}
     Input Text   app_id	       ${oauth_app_id}
     Click Button   new_endpoint
+
+
