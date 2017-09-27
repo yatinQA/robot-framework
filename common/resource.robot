@@ -32,6 +32,10 @@ ${CHECK_LOCKED_CASHIER_MSG}      Your cashier is locked as per your request - to
 ${SAME_PASSWORD_MSG}             Current password and New password cannot be the same.
 ${INV_OLD_PASSWORD}              Old password is wrong.
 ${SUCCESS_CHANGED_PASSWORD_MSG}  Your password has been changed. Please log in again.
+${SCOPE_REQUIRED_MSG}            Please select at least one scope
+${INV_CHAR_INPUT}                &%%&^%&^%:/'{}[
+${INV_CHAR_INPUT_MSG}            Only letters, numbers, space, _ are allowed.
+${TOKEN_NAME_INPUT}              Binary Token
 
 *** Keywords ***
 Set Chrome Options
