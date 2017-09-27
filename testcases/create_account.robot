@@ -76,6 +76,7 @@ Create Virtual Account
     set global variable   ${email_id}           test_qa_${random_int}@binary.com
     Input Text    email   ${email_id}
     Click Element   id=btn_verify_email
+    Sleep  5
     Wait Until Page Contains   Thank you for signing up 
     Retrieve Token
     Input Text    client_password   ${user_password} 
