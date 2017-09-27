@@ -4,7 +4,7 @@ Documentation     A resource file with reusable keywords and variables.
 ...               The system specific keywords created here form our own
 ...               domain specific language. They utilize keywords provided
 ...               by the imported Selenium2Library.
-Library		  String
+Library		      String
 Library           Selenium2Library 
 
 *** Variables ***
@@ -14,6 +14,7 @@ ${DELAY}          0
 ${VALID USER}     munsei+cr@binary.com
 ${VALID PASSWORD}    Password1!
 ${HOME URL}      https://staging.binary.com/en/home.html
+${ENDPOINT URL}  https://staging.binary.com/en/endpoint.html
 @{chrome_arguments}	--disable-infobars    --headless    --disable-gpu
 
 #THESE ARE GLOBAL VARIABLES
@@ -107,3 +108,11 @@ Open xvfb browser then login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
+
+Set Endpoint
+    [Arguments]	  ${server}   ${oauth_app_id}
+    Chrome Headless
+    Go To   ${ENDPOINT URL}
+    Input Text	 server_url    ${server}
+    Input Text   app_id	       ${oauth_app_id}
+    Click Button   new_endpoint
