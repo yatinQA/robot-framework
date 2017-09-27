@@ -5,12 +5,21 @@ Documentation     A test suite with a single test for checking change password p
 ...               This test has a workflow that is created using keywords in
 ...               the imported resource file.
 Resource          ../common/resource.robot
+Resource          ../common/navigation.robot
 
 *** Variables ***
 
 
 
 *** Keywords ***
+Navigate to change password
+
+    Navigate to setting&security
+    wait until element is visible   xpath=//*[@id="change_password"]/div[1]/a
+    wait until element is visible   xpath=//*[@id="change_password"]/div[1]/a
+    click element                   xpath=//*[@id="change_password"]/div[1]/a
+
+
 Verify the page is loaded successfuly
 
     wait until element is visible           xpath=//*[@id="content"]/div[2]/h1

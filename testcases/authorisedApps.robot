@@ -5,12 +5,20 @@ Documentation     A test suite with a single test for checking Authorised Applic
 ...               This test has a workflow that is created using keywords in
 ...               the imported resource file.
 Resource          ../common/resource.robot
+Resource          ../common/navigation.robot
 
 *** Variables ***
 
 
 
 *** Keywords ***
+
+Navigate to authorised page
+
+    Navigate to setting&security
+    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[7]/div[1]/a/img
+    click element                   xpath=//*[@id="settings_container"]/div/div[7]/div[1]/a
+
 
 Verify staging app
 
@@ -24,9 +32,8 @@ Verify revoke
 
 
    click button                    xpath=.//*[@id='applications-table']/tbody/tr[contains(.,'Binary-Staging')]/td[4]/button
-   sleep     3
+   sleep     2
    confirm action
-   #execute javascript              ("window.confirm = function(){return true;}");
    wait until element is visible   login
    Input Username	               ${VALID USER}
    Input Password	               ${VALID PASSWORD}
@@ -53,7 +60,7 @@ Verify grant process
 
 *** Test Cases ***
 Check Authorised Application Page
-    Valid Login
+    Open xvfb browser then login
     Navigate to authorised page
     verify staging app
     verify revoke
