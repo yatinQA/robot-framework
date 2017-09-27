@@ -68,10 +68,23 @@ Add new token
     wait until element is visible     xpath=//*[@id="tokens_table"]
     wait until element is visible     css=tr.new
 
+Verify duplicate name
+    reload page
+    sleep  5
+    wait until element is visible     xpath=//*[@id="chk_scopes_read"]
+    input text                        txt_name                ${TOKEN_NAME_INPUT}
+    click scopes
+    click button                      xpath=//*[@id="btn_submit"]
+    wait until element is visible     xpath=//*[@id="tokens_table"]
+    wait until element is visible     xpath=//*[@id="msg_form"]
+    element text should be            xpath=//*[@id="msg_form"]     ${NAME_TAKEN_MSG}
 Verify empty list
 
     element should not be visible  xpath=//*[@id="tokens_table"]
 
+Delete token
+    click button                      xpath=.//*[td[contains(.,'${TOKEN_NAME_INPUT}')]]/td[5]/button
+    confirm action
 Delete Newly Created Token
     click button                      xpath=.//*[@class='new']/td[5]/button
     confirm action
@@ -86,6 +99,7 @@ Check API Token Page
     verify required fields
     verify invalid input
     Add new token
-    delete newly created token
+    verify duplicate name
+    delete token
     capture page screenshot         screenshots/ApiTokenPage.png
     [Teardown]    Close Browser

@@ -36,6 +36,8 @@ ${SCOPE_REQUIRED_MSG}            Please select at least one scope
 ${INV_CHAR_INPUT}                &%%&^%&^%:/'{}[
 ${INV_CHAR_INPUT_MSG}            Only letters, numbers, space, _ are allowed.
 ${TOKEN_NAME_INPUT}              Binary Token
+${NAME_TAKEN_MSG}                The name is taken.
+${TOKEN_NAME_INPUT}              Duplicate Binary Token
 
 *** Keywords ***
 Set Chrome Options
