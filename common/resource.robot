@@ -74,6 +74,7 @@ Input Password
     Input Text    txtPass    ${password}
 
 Submit Credentials
+    wait until element is visible   login
     Click Button    login
 
 Grant Permission
@@ -105,6 +106,7 @@ Switch Virtual Account
 Open xvfb browser then login
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
+    wait until element is visible  btn_login
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
     Login Page Should Be Open
