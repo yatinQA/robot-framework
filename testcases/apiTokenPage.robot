@@ -36,7 +36,7 @@ Verify required fields
     element text should be    xpath=//*[@id="token_form"]/form/fieldset/div[1]/div[2]/div                ${REQUIRED_FIELD_MSG}
 
 Click Read Scope
-    wait until element is visible   xpath=//*[@id="chk_scopes_read"]
+    sleep       2
     unselect checkbox               xpath=//*[@id="chk_scopes_read"]
 
 Click Scopes
