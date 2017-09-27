@@ -82,6 +82,14 @@ Valid Login
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
 
+Valid Login With Email ID
+    [Arguments]	  ${email_id}   ${user_password}
+    Input Username	${email_id}
+    Input Password	${user_password}
+    Submit Credentials
+    ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
+    run keyword if   ${GRANT}!=1    Grant Permission
+    Wait Until Page Contains	Portfolio   10
 
 Invalid Login
     Open Browser To Login Page
