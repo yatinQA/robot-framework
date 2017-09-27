@@ -20,13 +20,19 @@ Navigate to API Token Page
     click element                       xpath=//*[@id="settings_container"]/div/div[6]/div[1]/a
 
 
+
 Verify the page is loaded successfuly
 
     wait until element is visible           xpath=//*[@id="api_token"]/h1
     wait until element is visible           xpath=//*[@id="api_token"]/ul
     wait until element is visible           xpath=//*[@id="token_form"]/form
+    sleep  2
+    ${DELETE_EXISTING}                       run keyword and return status      page should contain    ${TOKEN_NAME_INPUT}
+    run keyword if                          ${DELETE_EXISTING}    delete token
     page should contain                     Choose token Name
     mouse over                              xpath=//*[@id="token_form"]/form/fieldset/div[2]/div[2]/label[1]
+
+
 
 Verify required fields
     click button              xpath=//*[@id="btn_submit"]
