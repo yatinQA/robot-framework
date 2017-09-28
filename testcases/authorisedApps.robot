@@ -33,27 +33,31 @@ Verify revoke
    click button                    xpath=.//*[@id='applications-table']/tbody/tr[contains(.,'Binary-Staging')]/td[4]/button
    sleep     2
    confirm action
-   wait until element is visible   login
-   Input Username	               ${VALID USER}
-   Input Password	               ${VALID PASSWORD}
-   Click Button                    login
-
-Login after cancel
+Login after revoke
+    Open Browser    ${HOME URL}    ${BROWSER}
+    Go To   ${HOME URL}
+    wait until element is visible  btn_login
     Click Link	                   btn_login
+    Set Selenium Speed            ${DELAY}
     Input Username	               ${VALID USER}
     Input Password	               ${VALID PASSWORD}
     Click Button                   login
 
+Cancel Scope
+    wait until element is visible    xpath=//*[@id="wrapper"]/div[2]/form/div/button[2]
+    click button                     xpath=//*[@id="wrapper"]/div[2]/form/div/button[2]
+    wait until element is visible    btn_login
+    Click Link	                     btn_login
 verify authorise page
     wait until element is visible  xpath=//*[@id="wrapper"]/div[2]/h1
     wait until page contains       Review Permissions
 
 Verify grant process
 
-    verify authorise page
-    click button                   xpath=//*[@id="wrapper"]/div[2]/form/div/button[2]
-    wait until element is visible  xpath=//*[@id="btn_login"]
-    login after cancel
+    Set Selenium Speed             ${DELAY}
+    Input Username	               ${VALID USER}
+    Input Password	               ${VALID PASSWORD}
+    Click Button                   login
     verify authorise page
     click button                   confirm_scopes
 
@@ -63,7 +67,11 @@ Check Authorised Application Page
     Navigate to authorised page
     verify staging app
     verify revoke
+    close browser
+    login after revoke
+    cancel scope
     verify grant process
+    navigate to authorised page
     verify staging app
     capture page screenshot         screenshots/cashierPass.png
     [Teardown]    Close Browser
