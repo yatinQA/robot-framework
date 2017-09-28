@@ -1,4 +1,3 @@
-
 *** Settings ***
 Documentation     A test suite with a single test for checking Authorised Application page
 ...
@@ -34,9 +33,6 @@ Verify revoke
    click button                    xpath=.//*[@id='applications-table']/tbody/tr[contains(.,'Binary-Staging')]/td[4]/button
    sleep     2
    confirm action
-   reload page
-   sleep  3
-   click link                      btn_login
    wait until element is visible   login
    Input Username	               ${VALID USER}
    Input Password	               ${VALID PASSWORD}
