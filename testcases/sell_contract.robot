@@ -25,8 +25,9 @@ Verify Contract Result
 
 
 *** Test Cases ***
-Sell Contract
-    Valid Login
+Trade Up Down
+    open xvfb browser then login
+    maximize browser window
     Switch Virtual Account
     Click Element	id=contract_markets
     Wait Until Element Is Visible	contract_markets   10
@@ -43,8 +44,8 @@ Sell Contract
     Click Element  id=contract_purchase_button
     Wait Until Page Contains	Contract Information	60
     Wait Until Page Contains Element  id=sell_at_market
-    Sleep  15
-    Click Element  id=sell_at_market
+    wait until element is enabled   sell_at_market
+    Click button  xpath=//*[@id="sell_at_market"]
     Wait Until Page Contains  You have sold this contract   10
     Capture Page Screenshot   screenshots/contractsell.png
     Verify Contract Result
