@@ -25,7 +25,7 @@ Verify Contract Result
 
 
 *** Test Cases ***
-Trade Up Down
+Sell Contract
     Valid Login
     Switch Virtual Account
     Click Element	id=contract_markets
@@ -43,6 +43,7 @@ Trade Up Down
     Click Element  id=contract_purchase_button
     Wait Until Page Contains	Contract Information	60
     Wait Until Page Contains Element  id=sell_at_market
+    Sleep  15
     Click Element  id=sell_at_market
     Wait Until Page Contains  You have sold this contract   10
     Capture Page Screenshot   screenshots/contractsell.png
