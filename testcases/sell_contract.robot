@@ -27,7 +27,6 @@ Verify Contract Result
 *** Test Cases ***
 Buy and Sell Contract
     open xvfb browser then login
-    maximize browser window
     Switch Virtual Account
     Click Element	id=contract_markets
     Wait Until Element Is Visible	contract_markets   10
