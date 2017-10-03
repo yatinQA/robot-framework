@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     A test suite with a single test for buying Up/Down Rise/Fall contract.
+Documentation     A test suite with a single test for buying then manual sell Up/Down Rise/Fall contract.
 ...
 ...               This test has a workflow that is created using keywords in
 ...               the imported resource file.
@@ -25,7 +25,7 @@ Verify Contract Result
 
 
 *** Test Cases ***
-Trade Up Down
+Buy and Sell Contract
     open xvfb browser then login
     maximize browser window
     Switch Virtual Account
