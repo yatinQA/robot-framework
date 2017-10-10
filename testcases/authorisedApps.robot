@@ -1,4 +1,3 @@
-
 *** Settings ***
 Documentation     A test suite with a single test for checking Authorised Application page
 ...
@@ -27,36 +26,26 @@ Verify staging app
      page should contain                Binary-Staging
 
 
-
 Verify revoke
 
-
+   Choose Ok On Next Confirmation
    click button                    xpath=.//*[@id='applications-table']/tbody/tr[contains(.,'Binary-Staging')]/td[4]/button
-   sleep     2
    confirm action
-   wait until element is visible   login
-   Input Username	               ${VALID USER}
-   Input Password	               ${VALID PASSWORD}
-   Click Button                    login
 
-Login after cancel
-    Click Link	                   btn_login
-    Input Username	               ${VALID USER}
-    Input Password	               ${VALID PASSWORD}
-    Click Button                   login
+Login after revoke
+    Open Browser    ${HOME URL}    ${BROWSER}
+    Go To   ${HOME URL}
+    wait until element is visible  btn_login
+    Click Link	btn_login
+    Set Selenium Speed    ${DELAY}
+    Login Page Should Be Open
+    Input Username	${VALID USER}
+    Input Password	${VALID PASSWORD}
+    Submit Credentials
+    page should contain          Review Permissions
+    grant permission
+    Wait Until Page Contains	Portfolio   10
 
-verify authorise page
-    wait until element is visible  xpath=//*[@id="wrapper"]/div[2]/h1
-    wait until page contains       Review Permissions
-
-Verify grant process
-
-    verify authorise page
-    click button                   xpath=//*[@id="wrapper"]/div[2]/form/div/button[2]
-    wait until element is visible  xpath=//*[@id="btn_login"]
-    login after cancel
-    verify authorise page
-    click button                   confirm_scopes
 
 *** Test Cases ***
 Check Authorised Application Page
@@ -64,7 +53,9 @@ Check Authorised Application Page
     Navigate to authorised page
     verify staging app
     verify revoke
-    verify grant process
+    close browser
+    login after revoke
+    navigate to authorised page
     verify staging app
     capture page screenshot         screenshots/cashierPass.png
     [Teardown]    Close Browser

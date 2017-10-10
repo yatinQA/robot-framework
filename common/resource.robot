@@ -33,6 +33,12 @@ ${CHECK_LOCKED_CASHIER_MSG}      Your cashier is locked as per your request - to
 ${SAME_PASSWORD_MSG}             Current password and New password cannot be the same.
 ${INV_OLD_PASSWORD}              Old password is wrong.
 ${SUCCESS_CHANGED_PASSWORD_MSG}  Your password has been changed. Please log in again.
+${SCOPE_REQUIRED_MSG}            Please select at least one scope
+${INV_CHAR_INPUT}                &%%&^%&^%:/'{}[
+${INV_CHAR_INPUT_MSG}            Only letters, numbers, space, _ are allowed.
+${TOKEN_NAME_INPUT}              Binary Token
+${NAME_TAKEN_MSG}                The name is taken.
+${TOKEN_NAME_INPUT}              Duplicate Binary Token
 
 *** Keywords ***
 Set Chrome Options
@@ -68,6 +74,7 @@ Input Password
     Input Text    txtPass    ${password}
 
 Submit Credentials
+    wait until element is visible   login
     Click Button    login
 
 Grant Permission
@@ -107,6 +114,7 @@ Switch Virtual Account
 Open xvfb browser then login
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
+    wait until element is visible  btn_login
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
     Login Page Should Be Open
@@ -124,3 +132,5 @@ Set Endpoint
     Input Text	 server_url    ${server}
     Input Text   app_id	       ${oauth_app_id}
     Click Button   new_endpoint
+
+
