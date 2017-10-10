@@ -19,3 +19,8 @@ Navigate to cashier page
     click element                       xpath=//*[@id="topMenuCashier"]/a
 
 
+Navigate to profile
+    sleep  3
+    click element  css=div.account-id
+    click element  xpath=//*[@id="all-accounts"]/li/ul/a[1]/li
+    wait until page contains    Profile     5
