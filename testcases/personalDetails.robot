@@ -92,7 +92,7 @@ Update personal details
 
 
 *** Test Cases ***
-Check Changed Password Page
+Check Personal Details
     open xvfb browser then login
     Navigate to personal details page
     verify the page is loaded successfuly
