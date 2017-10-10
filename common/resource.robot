@@ -127,8 +127,9 @@ Open xvfb browser then login
 
 Set Endpoint
     [Arguments]	  ${server}   ${oauth_app_id}
-    Chrome Headless
-    Go To   ${ENDPOINT URL}
+    #Chrome Headless
+    #Go To   ${ENDPOINT URL}
+    Open Browser    ${ENDPOINT URL}    ${BROWSER}
     Input Text	 server_url    ${server}
     Input Text   app_id	       ${oauth_app_id}
     Click Button   new_endpoint
