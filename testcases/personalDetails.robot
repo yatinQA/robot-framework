@@ -1,6 +1,6 @@
 
 *** Settings ***
-Documentation     A test suite with a single test for checking change password page
+Documentation     A test suite with a single test for personal details page
 ...
 ...               This test has a workflow that is created using keywords in
 ...               the imported resource file.
@@ -43,12 +43,14 @@ Verify required fields
     element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[1]/div[2]/div                  ${REQUIRED_FIELD_MSG}
     element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[3]/div[2]/div                  ${REQUIRED_FIELD_MSG}
     element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[6]/div[2]/div                  ${REQUIRED_FIELD_MSG}
+
 Remove tax residence
 
-
-
+    clear element text               xpath=.//*[@id='frmPersonalDetails']/fieldset[2]/div[1]/div[2]/span/span[1]/span/ul/li/input
 Verify invalid input
-
+    ${tax_residence}             run keyword and return status  should not be empty     tax_residence
+    run keyword if                ${tax_residence}   Remove tax residence
+    select from list                tax_residence   Angola      Denmark
     clear element text              tax_identification_number
     input text                      tax_identification_number                                                    ${INV_CHAR_INPUT}
     element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[2]/div[2]/div[2]/div            ${INV_CHAR_TAX_ZIP_NO_MSG}
