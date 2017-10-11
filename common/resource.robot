@@ -11,8 +11,8 @@ Library           Selenium2Library
 #THESE ARE BROWSER VARIBALES
 ${BROWSER}        Chrome 
 ${DELAY}          0
-${VALID USER}     munsei+cr@binary.com
-${VALID PASSWORD}    Password1!
+${VALID USER}     ridho+jp@binary.com
+${VALID PASSWORD}    Abcd1234
 ${HOME URL}      https://staging.binary.com/en/home.html
 ${ENDPOINT URL}  https://staging.binary.com/en/endpoint.html
 @{chrome_arguments}	--disable-infobars    --headless    --disable-gpu
