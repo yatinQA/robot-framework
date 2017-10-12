@@ -11,9 +11,12 @@ Library           Selenium2Library
 #THESE ARE BROWSER VARIBALES
 ${BROWSER}        Chrome 
 ${DELAY}          0
-${VALID USER}     ridho+jp@binary.com
-${VALID PASSWORD}    Abcd1234
+${VALID USER}     munsei+cr@binary.com
+${VALID PASSWORD}  Password1!
+${VALID JP USER}     ridho+jp@binary.com
+${VALID JP PASSWORD}  Abcd1234
 ${HOME URL}      https://staging.binary.com/en/home.html
+${HOME URL JP}   https://staging.binary.com/ja/home-jp.html
 ${ENDPOINT URL}  https://staging.binary.com/en/endpoint.html
 @{chrome_arguments}	--disable-infobars    --headless    --disable-gpu
 
@@ -64,6 +67,10 @@ Open Browser To Login Page
 
 Login Page Should Be Open
     Page Should Contain   Log in using your email address
+
+
+Japan Login Page Should Be Open
+    Page Should Contain   メールアドレスとパスワードを入力してログインしてください
 
 Input Username
     [Arguments]    ${username}
@@ -124,6 +131,20 @@ Open xvfb browser then login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
+
+Open xvfb browser then login using JP account
+    Open Browser   ${HOME URL JP}    ${BROWSER}
+    Go To   ${HOME URL JP}
+    wait until element is visible  btn_login
+    Click Link	btn_login
+    Set Selenium Speed    ${DELAY}
+    japan login page should be open
+    Input Username	${VALID JP USER}
+    Input Password	${VALID JP PASSWORD}
+    Submit Credentials
+    ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
+    run keyword if   ${GRANT}!=1    Grant Permission
+    Wait Until Page Contains	トレード   10
 
 Set Endpoint
     [Arguments]	  ${server}   ${oauth_app_id}

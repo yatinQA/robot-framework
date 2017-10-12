@@ -27,6 +27,3 @@ Navigate to profile
     click element  css=div.account-id
     click element  xpath=//*[@id="all-accounts"]/li/ul/a[1]/li
     wait until page contains    Profile     5
-
-Switch to JP
-    go to  https://staging.binary.com/ja/multi_barriers_trading.html

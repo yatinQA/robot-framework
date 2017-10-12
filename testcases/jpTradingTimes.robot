@@ -14,7 +14,7 @@ Library            Collections
 
 *** Keywords ***
 Navigate to trading times
-    switch to jp
+
     Navigate to resources page
     wait until element is visible   xpath=//*[@id="content"]/div[2]/div/div[2]/div[1]/a
     click element                   xpath=//*[@id="content"]/div[2]/div/div[2]/div[1]/a
@@ -26,13 +26,23 @@ Verify the page is loaded successfuly
     wait until element is visible           xpath=//*[@id="market_1"]/div/div
     wait until element is visible           xpath=//*[@id="content"]/div[2]/p[2]
 
-
+verify the markets is correct
+    wait until element is visible               xpath=//*[@id="外国為替-0"]/tbody/tr[*]/td[1]
+    ${count}=    Get Matching Xpath Count   xpath=//*[@id="外国為替-0"]/tbody/tr[*]/td[1]
+    ${ACTUAL_MARKKETS}=    Create List
+    :FOR    ${i}    IN RANGE    1    ${count}+1
+    \   ${ACTUAL_MARKKET}=    Get Text        xpath=//*[@id="外国為替-0"]/tbody/tr[${i}]/td[1]
+    \    Append To List   ${ACTUAL_MARKKETS}    ${ACTUAL_MARKKET}
+    ${EXPECTED_MARKET}      create list         AUD/JPY              AUD/USD         EUR/GBP    EUR/JPY     EUR/USD     GBP/JPY     GBP/USD     USD/CAD     USD/JPY
+    log      ${ACTUAL_MARKKETS}
+    lists should be equal  ${ACTUAL_MARKKETS}    ${EXPECTED_MARKET}
 
 
 *** Test Cases ***
 Check JP trading Times Page
-    open xvfb browser then login
+    open xvfb browser then login using jp account
     Navigate to trading times
     verify the page is loaded successfuly
+    verify the markets is correct
     capture page screenshot         screenshots/changepassword.png
     [Teardown]    Close Browser
