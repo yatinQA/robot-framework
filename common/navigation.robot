@@ -18,6 +18,9 @@ Navigate to cashier page
 
     click element                       xpath=//*[@id="topMenuCashier"]/a
 
+Navigate to resources page
+    click element                xpath=//*[@id="topMenuResources"]/a
+
 
 Navigate to profile
     sleep  3
