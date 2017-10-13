@@ -23,11 +23,8 @@ Verify Contract Result
     ${profit_lost_evaluate}=	Convert To String	${profit_lost_evaluate}
     Should Be True	'${profit_lost}' == '${profit_lost_evaluate}'
 
+Buy and then sell the contract
 
-*** Test Cases ***
-Buy and Sell Contract
-    open xvfb browser then login
-    Switch Virtual Account
     Click Element	id=contract_markets
     Wait Until Element Is Visible	contract_markets   10
     Select From List By Label	id=contract_markets	Volatility Indices
@@ -46,6 +43,12 @@ Buy and Sell Contract
     wait until element is enabled   sell_at_market
     Click button  xpath=//*[@id="sell_at_market"]
     Wait Until Page Contains  You have sold this contract   10
+
+*** Test Cases ***
+Buy and Sell Contract
+    open xvfb browser then login
+    Switch Virtual Account
+    Buy and then sell the contract
     Capture Page Screenshot   screenshots/contractsell.png
     Verify Contract Result
     [Teardown]    Close Browser
