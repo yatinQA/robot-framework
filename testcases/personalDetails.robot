@@ -101,5 +101,5 @@ Check Personal Details
     verify required fields
     verify invalid input
     update personal details
-    capture page screenshot         screenshots/changepassword.png
+    capture page screenshot         screenshots/personalDetail.png
     [Teardown]    Close Browser
