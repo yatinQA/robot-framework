@@ -16,6 +16,8 @@
 - Login History Page
 - Trading Page : Buy and Manual Sell Contract
 - Japan Trading Times
+- Footer: Social Network Mailer Link
+- Create Virtual Account (currently run in QA10)
 
 
 <b>Running the tests:</b>
