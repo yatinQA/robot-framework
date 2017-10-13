@@ -57,5 +57,5 @@ Check Authorised Application Page
     login after revoke
     navigate to authorised page
     verify staging app
-    capture page screenshot         screenshots/cashierPass.png
+    capture page screenshot         screenshots/authorisedApp.png
     [Teardown]    Close Browser
