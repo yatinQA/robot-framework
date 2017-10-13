@@ -44,5 +44,5 @@ Check JP trading Times Page
     Navigate to trading times
     verify the page is loaded successfuly
     verify the markets is correct
-    capture page screenshot         screenshots/changepassword.png
+    capture page screenshot         screenshots/JPTradingTimes.png
     [Teardown]    Close Browser
