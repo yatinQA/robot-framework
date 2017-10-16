@@ -57,14 +57,13 @@ Lock cashier
 
 Verify Locked Cashier
 
-    wait until element is visible   xpath=//*[@id='content']/div[2]/div[3]/div/div[3]/div[1]/a
-    click element                   xpath=//*[@id='content']/div[2]/div[3]/div/div[3]/div[1]/a/span
+    wait until element is visible   xpath=//*[@id="content"]/div[2]/div[4]
+    click element                   xpath=//*[@id="deposit_btn_cashier"]/span
     wait until element is visible   xpath=//*[@id="cashier_locked_message"]
     element text should be          xpath=//*[@id="cashier_locked_message"]                                      ${CHECK_LOCKED_CASHIER_MSG}
     navigate to cashier page
-    reload page
-    wait until element is visible   xpath=//*[@id='content']/div[2]/div[3]/div/div[3]/div[2]/a/span
-    click element                   xpath=//*[@id='content']/div[2]/div[3]/div/div[3]/div[2]/a/span
+    wait until element is visible   xpath=//*[@id="content"]/div[2]/div[4]    10
+    click element                   xpath=//*[@id="content"]/div[2]/div[4]/div/div[3]/div[2]/a/span
     wait until element is visible   xpath=//*[@id="cashier_locked_message"]
     element text should be          xpath=//*[@id="cashier_locked_message"]                                      ${CHECK_LOCKED_CASHIER_MSG}
 
@@ -79,7 +78,7 @@ Unlock cashier
 
 *** Test Cases ***
 Check Cashier Page
-    Valid Login
+    open xvfb browser then login
     Navigate to cashier password page
     Wait Until Element Is Visible	xpath=//*[@id="content"]/div[2]/h1
     wait until element is visible   xpath=//*[@id="frm_cashier_password"]/fieldset
