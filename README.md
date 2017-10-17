@@ -18,6 +18,8 @@
 - Japan Trading Times
 - Footer: Social Network Mailer Link
 - Create Virtual Account (currently run in QA10)
+- Statement Page
+- Portfolio Page
 
 
 <b>Running the tests:</b>

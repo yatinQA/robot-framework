@@ -25,7 +25,9 @@ Navigate to Statement Page
 
     click element                  xpath=//*[@id="topMenuStatement"]/a
 
+Navigate to portfolio Page
 
+    click element               xpath=//*[@id="topMenuPortfolio"]/a
 Navigate to profile
     sleep  3
     click element  css=div.account-id
