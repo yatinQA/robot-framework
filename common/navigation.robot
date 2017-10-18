@@ -28,6 +28,11 @@ Navigate to Statement Page
 Navigate to portfolio Page
 
     click element               xpath=//*[@id="topMenuPortfolio"]/a
+
+Navigate to Profit Table Page
+
+    click element           xpath=//*[@id="topMenuProfitTable"]/a
+
 Navigate to profile
     sleep  3
     click element  css=div.account-id
