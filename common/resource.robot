@@ -13,6 +13,10 @@ ${BROWSER}        Chrome
 ${DELAY}          0
 ${VALID USER}     munsei+cr@binary.com
 ${VALID PASSWORD}  Password1!
+${VALID CRYPTO USER}     ridho@binary.com
+${VALID CRYPTO PASSWORD}  Abcd1234
+${VALID MLT/MF USER}     ridho+MLT@binary.com
+${VALID MLT/MF PASSWORD}  Abcd1234
 ${VALID JP USER}     ridho+jp@binary.com
 ${VALID JP PASSWORD}  Abcd1234
 ${HOME URL}      https://staging.binary.com/en/home.html
@@ -118,6 +122,36 @@ Switch Virtual Account
     Click Element	css=div>a>li
     Wait Until Page Contains	Portfolio   10
 
+Switch to BTC Account
+
+    sleep  10
+    click element  css=div.account-id
+    click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"BTC")]/li
+    Wait Until Page Contains	Portfolio   10
+
+
+Switch to BCH Account
+
+    sleep  10
+    click element  css=div.account-id
+    click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"BCH")]/li
+    Wait Until Page Contains	Portfolio   10
+
+
+Switch to LTC Account
+
+    sleep  10
+    click element  css=div.account-id
+    click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"LTC")]/li
+    Wait Until Page Contains	Portfolio   10
+
+Switch to MLT Account
+
+    sleep  10
+    click element  css=div.account-id
+    click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"MLT")]/li
+    Wait Until Page Contains	Portfolio   10
+
 Open xvfb browser then login
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
@@ -145,6 +179,37 @@ Open xvfb browser then login using JP account
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	トレード   10
+
+
+Open Login page in xvfb browser
+
+    Open Browser    ${HOME URL}    ${BROWSER}
+    Go To   ${HOME URL}
+    wait until element is visible  btn_login
+    Click Link	btn_login
+    Set Selenium Speed    ${DELAY}
+    Login Page Should Be Open
+
+Login using Crypto Account
+
+    Input Username	${VALID CRYPTO USER}
+    Input Password	${VALID CRYPTO PASSWORD}
+    Submit Credentials
+    ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
+    run keyword if   ${GRANT}!=1    Grant Permission
+    Wait Until Page Contains	Portfolio   10
+
+Login using MLT/MF Account
+
+    Input Username	 ${VALID MLT/MF USER}
+    Input Password	 ${VALID MLT/MF PASSWORD}
+    Submit Credentials
+    ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
+    run keyword if   ${GRANT}!=1    Grant Permission
+    Wait Until Page Contains	Portfolio   10
+    sleep  3
+    click button    xpath=//*[@id="reality_check_nav"]/button
+
 
 Set Endpoint
     [Arguments]	  ${server}   ${oauth_app_id}

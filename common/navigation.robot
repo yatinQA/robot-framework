@@ -14,6 +14,7 @@ Navigate to setting&security
     Click Element	css=li.topMenuSecurity
     Wait Until Page Contains	Security   5
 
+
 Navigate to cashier page
 
     click element                       xpath=//*[@id="topMenuCashier"]/a
