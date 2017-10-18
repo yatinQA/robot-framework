@@ -17,6 +17,8 @@ ${VALID CRYPTO USER}     ridho@binary.com
 ${VALID CRYPTO PASSWORD}  Abcd1234
 ${VALID MLT/MF USER}     ridho+MLT@binary.com
 ${VALID MLT/MF PASSWORD}  Abcd1234
+${VALID MX USER}     ridho+mx@binary.com
+${VALID MX PASSWORD}  abcd1234
 ${VALID JP USER}     ridho+jp@binary.com
 ${VALID JP PASSWORD}  Abcd1234
 ${HOME URL}      https://staging.binary.com/en/home.html
@@ -203,6 +205,17 @@ Login using MLT/MF Account
 
     Input Username	 ${VALID MLT/MF USER}
     Input Password	 ${VALID MLT/MF PASSWORD}
+    Submit Credentials
+    ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
+    run keyword if   ${GRANT}!=1    Grant Permission
+    Wait Until Page Contains	Portfolio   10
+    sleep  5
+    click button    xpath=//*[@id="reality_check_nav"]/button
+
+Login using MX Account
+
+    Input Username	 ${VALID MX USER}
+    Input Password	 ${VALID MX PASSWORD}
     Submit Credentials
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
