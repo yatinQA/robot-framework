@@ -90,5 +90,5 @@ Check Profit Table Page
     Navigate to Profit Table Page
     verify the page is loaded successfuly
     verify recent bought contract added in profit table page
-    capture page screenshot         screenshots/ProfitTabelPage.png
+    capture page screenshot         screenshots/ProfitTablePage.png
     [Teardown]    Close Browser
