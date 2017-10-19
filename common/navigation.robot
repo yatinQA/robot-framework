@@ -14,6 +14,14 @@ Navigate to setting&security
     Click Element	css=li.topMenuSecurity
     Wait Until Page Contains	Security   5
 
+
+Navigate to JP setting&security
+    Sleep  5
+    Click Element	css=div.account-id
+    Click Element	css=li.topMenuSecurity
+    Wait Until Page Contains	セキュリティ情報   5
+
+
 Navigate to cashier page
 
     click element                       xpath=//*[@id="topMenuCashier"]/a

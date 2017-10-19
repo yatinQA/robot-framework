@@ -17,13 +17,6 @@ ${PURCHASE_PRICE}
 ${SELL_PRICE}
 *** Keywords ***
 
-Navigate to personal details page
-    sleep  3
-    Navigate to profile
-    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a
-    click element                   xpath=//*[@id="settings_container"]/div/div[2]/div[1]/a
-
-
 Verify the page is loaded successfuly
 
     sleep  10
