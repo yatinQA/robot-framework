@@ -84,7 +84,7 @@ Create Virtual Account
     Wait Until Element Contains   id=residence   id
     Select From List	id=residence   id
     Click Element	xpath=//*[@id="virtual-form"]/div/button
-    wait until page contains    Upgrade to a Real Account   60
+    wait until page contains    Open a Real Account   60
     page should contain    You're using a Virtual Account
 
 Logout and Login
