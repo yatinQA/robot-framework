@@ -11,7 +11,8 @@ Library            String
 
 *** Variables ***
 ${INV_CHAR_ADRRESS_MSG}               Only letters, numbers, space, and these special characters are allowed: - . ' # ; : ( ) , @ /
-${INV_CHAR_TAX_ZIP_NO_MSG}            Only letters, numbers, space, and hyphen are allowed.
+${INV_CHAR_ZIP_NO_MSG}            Only letters, numbers, space, and hyphen are allowed.
+${INV_CHAR_TAX_NO_MSG}            Should start with letter or number, and may contain hyphen and underscore.
 ${INV_CHAR_CITY_MSG}                  Only letters, space, hyphen, period, and apostrophe are allowed.
 ${INV_CHAR_PHONE_MSG}                 Only numbers and spaces are allowed.
 ${MIN_INPUT_NO}                       1234
@@ -53,7 +54,7 @@ Verify invalid input
     select from list                tax_residence   Angola      Denmark
     clear element text              tax_identification_number
     input text                      tax_identification_number                                                    ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[2]/div[2]/div[2]/div            ${INV_CHAR_TAX_ZIP_NO_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[2]/div[2]/div[2]/div            ${INV_CHAR_TAX_NO_MSG}
     input text                      address_line_1                                                               ${INV_CHAR_INPUT}
     element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[1]/div[2]/div            ${INV_CHAR_ADRRESS_MSG}
     clear element text              address_line_2
@@ -64,7 +65,7 @@ Verify invalid input
     element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[3]/div[2]/div            ${INV_CHAR_CITY_MSG}
     clear element text              address_postcode
     input text                      address_postcode                                                             ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[5]/div[2]/div            ${INV_CHAR_TAX_ZIP_NO_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[5]/div[2]/div            ${INV_CHAR_ZIP_NO_MSG}
     clear element text              phone
     input text                      phone                                                                         ${INV_CHAR_INPUT}
     element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[6]/div[2]/div             ${INV_CHAR_PHONE_MSG}
