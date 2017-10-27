@@ -14,6 +14,7 @@ ${country_id}		  id
 ${currency_fiat}      USD
 @{crypto_list}=       BCH
 ...                   BTC
+...                   ETH
 ...                   LTC
 
 *** Keywords ***
@@ -22,6 +23,8 @@ Create Crypto Accounts
     Click Element  css=div.account-id
     Click Element  xpath=//*[@id="user_accounts"]/li
     wait until page contains  Create New Account   30
+    reload page
+    wait until element is visible   xpath=//*[@id="new_account_opening"]/td[4]/button   60
     Run keyword if  "${crypto_currency}"!="LTC"
     ...   Select From List	id=new_account_currency   ${crypto_currency}
     sleep  5
