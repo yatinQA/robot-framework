@@ -22,6 +22,7 @@ ${address_line_1}	123 Abc
 ${address_city}		Abc City
 ${phone}	      	+62456787612
 ${secret_answer}	test answer
+${row}              2
 
 *** Keywords ***
 Scroll Page To Middle
@@ -48,7 +49,17 @@ Prepare Endpoint Environment Xvfb
 Retrieve Token
     Go To   ${email_url}
     ${count}=   Get Matching Xpath Count    //html/body/pre/a[contains(.,'Content-Transfer-Encoding')]
-    ${xpath_count}=   Evaluate	${count} + 1
+    :FOR    ${i}    IN RANGE    999999
+    \    ${i}=   Evaluate	${i} + 1
+    \    ${xpath_count}=   Evaluate	${count} + ${i}
+    \    ${email_xpath}=    Get text    xpath=//body/pre/a[${row}]
+    \    Exit For Loop If    '${email_xpath}' == 'Content-Transfer-Encoding: quoted-printable-201..>'
+    \    ${i}=   Evaluate	${i} + 1
+    \    ${row}=   Evaluate	${row} + 1
+    \    Log    ${i}
+    \    Log    ${row}
+
+    #${xpath_count}=   Evaluate	${count} + 1
     Click Element     xpath=//html/body/pre/a[${xpath_count}]
     ${verification_url}=   Get Text    xpath=//html/body/center/table[@id='3D"bodyTable"']/tbody/tr/td[@id='3D"bodyCell"']/table[@id='3D"templateContainer"']/tbody/tr[2]/td/table[@id='3D"templateBody"']/tbody/tr/td[@class='3D"bodyCon=']/p[3]/a
     ${token} =	Get Substring	${verification_url}	  -8
