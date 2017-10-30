@@ -114,10 +114,8 @@ Update personal details
 Check Personal Details After Update
 
     ${expected_tax_residence}         create list     Angola      Denmark
-    reload page
-    sleep       5
-   # ${Selected_tax_residence}                get selected list labels             tax_residence
-    #should be equal                            ${Selected_tax_residence}          ${expected_tax_residence}
+    ${Selected_tax_residence}                get selected list labels             tax_residence
+    should be equal                            ${Selected_tax_residence}          ${expected_tax_residence}
     textfield value should be                  tax_identification_number            ${Tax_No}
     textfield value should be                 address_line_1                       ${address_line1}
     textfield value should be                 address_line_2                       ${address_line2}
