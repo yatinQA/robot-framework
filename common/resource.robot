@@ -233,4 +233,13 @@ Set Endpoint
     Input Text   app_id	       ${oauth_app_id}
     Click Button   new_endpoint
 
+Set Endpoint Xvfb
+    [Arguments]	  ${server}   ${oauth_app_id}
+    #Chrome Headless
+    #Go To   ${ENDPOINT URL}
+    Open Browser    ${ENDPOINT URL}    ${BROWSER}
+    Input Text	 server_url    ${server}
+    Input Text   app_id	       ${oauth_app_id}
+    Click Button   new_endpoint
+
 

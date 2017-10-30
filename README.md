@@ -5,22 +5,18 @@
 - Travis CI for continuous integration
 - Headless Browser Testing
 
-<b>Currently automated tests are already developed for following pages in binary.com:</b>
+<b>Currently automated tests are already developed for the following pages in binary.com:</b>
 - Login Page
-- Personal Details Page
-- Login History Page
-- Change Password Page
-- Cashier Password Page
-- API Token Page
-- Authorized Applications Page
-- Login History Page
-- Trading Page : Buy and Manual Sell Contract
+- <b>Profile</b>: Personal Details, Financial Assessment
+- <b>Security & Limits</b>: Account Password, Cashier Password, Limits, Login History, API Token Page, Authorized Applications 
+- <b>Trading</b>: Buy Contract, Manual Sell Contract
 - Japan Trading Times
 - Footer: Social Network Mailer Link
 - Create Virtual Account (currently run in QA10)
+- Upgrade Real CR Account (currently run in QA10)
 - Statement Page
 - Portfolio Page
-
+- Profit Table Page
 
 <b>Running the tests:</b>
 
@@ -34,7 +30,6 @@ Currently tests are running on Chrome Headless Browser using xvfb (X Virtual Fra
 
 <b>Integration with binary-static</b>
 
-
-Tests are running against binary staging site and whenever any tests fail on binary-static-ci it will send an email notification to concerned persons.Front-end team will make the fix the issues in staging itself before any release to production.
+Tests are running against binary staging site and whenever any test failed, it will send an email notification to concerned persons. Issues in staging will be fixed before any release to production.
 
 
