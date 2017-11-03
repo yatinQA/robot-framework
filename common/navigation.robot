@@ -49,4 +49,4 @@ Navigate to financial assessment page
     Sleep   5
     navigate to profile
     wait until element is visible   xpath=//*[@id="settings_container"]/div/div[1]/div[1]/a
-    click element                   link=Financial Assessment
+    click element                   xpath=//*[@id="settings_container"]/div/div[2]/div[2]/h4/a
