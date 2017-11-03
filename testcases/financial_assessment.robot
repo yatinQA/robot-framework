@@ -84,7 +84,7 @@ Verify nothing to change message appear
 *** Test Cases ***
 
 Check each field can be updated
-    Open xvfb browser then login
+    valid login
     Navigate to financial assessment page
     Verify the page is loaded successfully
     Set financial information   ${original_option}
