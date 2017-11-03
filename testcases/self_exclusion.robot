@@ -25,6 +25,7 @@ ${SELF_EXCLUSION_INTRO}     Trading the financial markets can become addictive. 
 ...                        max_7day_losses
 ...                        max_30day_turnover
 ...                        max_open_bets
+...                        max_30day_losses
 
 
 
@@ -45,38 +46,44 @@ Verify the page is loaded successfuly
     page should contain                     Self-Exclusion Facilities
     wait until element is visible           xpath=//*[@id="frm_self_exclusion"]      10
 
-Verify the field is Empty
+Update self-exlcusion
 
     : FOR  ${i}  IN  @{FIELD_ID}
 
-    \  ${selected_option_value}        get value       xpath=//*[@id="${i}"]
+    \  ${original_value}            get value       xpath=//*[@id="${i}"]
     \  ${Current_value}             get value       xpath=//*[@id="${i}"]
     \  ${Current_value}        evaluate  ${Current_value} -1
-    \   Run keyword if       "${selected_option_value}"== "${empty}"
+    \   Run keyword if       "${original_value}"== "${empty}"
         ...    input text       xpath=//*[@id="${i}"]       1000
         ...    ELSE
         ...    input text            xpath=//*[@id="${i}"]       ${Current_value}
 
     click button    btn_submit
 
-Verify the page in JP is loaded successfuly
-
-    sleep  5
-    page should contain                     取引上限及び出金限度額の設定
-    ${USER_ID}      get text                xpath=//*[@id="main-account"]/li/a/div[1]/div[2]
-    element text should be                  xpath=//*[@id="trading-limits"]              ${USER_ID} - 取引上限について
-    wait until element is visible           xpath=//*[@id="client-limits"]
-    element should not be visible           xpath=//*[@id="withdrawal-title"]
-
-
+Verify error message
+     wait until page contains                ${SELF_EXCLUSION_INTRO}         10
+    : FOR  ${i}  IN  @{FIELD_ID}
+    \  ${original_value}             get value                xpath=//*[@id="${i}"]
+  # \  ${original_value} =            replace string using regexp     ${original_value}        (\\d{3}$)    ,\\1
+    \  ${Current_value}             get value             xpath=//*[@id="${i}"]
+    \  ${Current_value}        evaluate  ${Current_value} +1
+    \   Run keyword if       "${original_value}"!= "${empty}"
+        ...    input text            xpath=//*[@id="${i}"]       ${Current_value}
+    \   ${CONVER_NO}             get text         xpath=//*[@id="${i}"]//following-sibling::div[2]
+    \   ${final_msg}            remove string  ${CONVER_NO}     ,
+    #\   element text should be       xpath=//*[@id="frm_self_exclusion"]/fieldset/div[*]/div[2]/div[2]   Should be between 0 and ${original_value}
+    \   should be equal       ${final_msg}      Should be between 0 and ${original_value}
 
 
 *** Test Cases ***
-Check Limit Page for CR Account
+Check Self Exclusion Page
     open login page in xvfb browser
     login using crypto account
     Navigate to Self Exclusion page
     verify the page is loaded successfuly
-    verify the field is empty
+    verify error message
+    reload page
+    sleep   5
+    update self-exlcusion
     capture page screenshot
     [Teardown]    Close Browser
