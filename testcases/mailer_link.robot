@@ -19,7 +19,7 @@ Verify YouTube Link
     Wait Until Element Is Visible   xpath=${youtube_path}
     Check Open Tab  ${youtube_path}
     Select Window   url=https://www.youtube.com/user/BinaryTradingVideos
-    Page Should Contain  What Is Binary Options Trading?
+    Page Should Contain  Binary.com
     capture page screenshot    screenshots/youtube.png
     select window  url=${HOME URL}
 
