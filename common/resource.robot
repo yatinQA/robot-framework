@@ -154,6 +154,7 @@ Switch to MLT Account
     click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"MLT")]/li
     Wait Until Page Contains	Portfolio   10
 
+
 Open xvfb browser then login
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
@@ -167,6 +168,7 @@ Open xvfb browser then login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
+    click element       close_ico_banner
 
 Open xvfb browser then login using JP account
     Open Browser   ${HOME URL JP}    ${BROWSER}
@@ -191,6 +193,7 @@ Open Login page in xvfb browser
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
     Login Page Should Be Open
+    click element       close_ico_banner
 
 Login using Crypto Account
 
@@ -200,6 +203,7 @@ Login using Crypto Account
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
+    click element       close_ico_banner
 
 Login using MLT/MF Account
 
@@ -211,6 +215,7 @@ Login using MLT/MF Account
     Wait Until Page Contains	Portfolio   10
     sleep  5
     click button    xpath=//*[@id="reality_check_nav"]/button
+    click element       close_ico_banner
 
 Login using MX Account
 
@@ -222,6 +227,7 @@ Login using MX Account
     Wait Until Page Contains	Portfolio   10
     sleep  3
     click button    xpath=//*[@id="reality_check_nav"]/button
+    click element       close_ico_banner
 
 
 Set Endpoint

@@ -24,9 +24,7 @@ ${SELF_EXCLUSION_INTRO}     Trading the financial markets can become addictive. 
 ...                        max_7day_turnover
 ...                        max_7day_losses
 ...                        max_30day_turnover
-...                        max_open_bets
 ...                        max_30day_losses
-
 
 
 
@@ -58,6 +56,13 @@ Update self-exlcusion
         ...    ELSE
         ...    input text            xpath=//*[@id="${i}"]       ${Current_value}
 
+    ${original_Max_OpenValue}        get value       xpath=//*[@id="max_open_bets"]
+    ${Update_MaxOpenBet}             get value       xpath=//*[@id="max_open_bets"]
+    ${Update_MaxOpenBet}             evaluate  ${original_Max_OpenValue} -1
+    Run keyword if                  "${original_Max_OpenValue}"== "${empty}"
+     ...    input text       xpath=//*[@id="max_open_bets"]       60
+     ...    ELSE
+     ...    input text       xpath=//*[@id="max_open_bets"]      ${Update_MaxOpenBet}
     click button    btn_submit
 
 Verify error message
@@ -73,6 +78,17 @@ Verify error message
     \   ${final_msg}            remove string  ${CONVER_NO}     ,
     #\   element text should be       xpath=//*[@id="frm_self_exclusion"]/fieldset/div[*]/div[2]/div[2]   Should be between 0 and ${original_value}
     \   should be equal       ${final_msg}      Should be between 0 and ${original_value}
+    \   reload page
+    \   sleep       3
+    \   wait until page contains       ${SELF_EXCLUSION_INTRO}         10
+    \   run keyword if       "${original_value}"!= "${empty}"
+        ...    input text            xpath=//*[@id="${i}"]      444.3344343
+    \   element text should be           xpath=//*[@id="${i}"]//following-sibling::div[2]       Only 0, 2 decimal points are allowed.
+    \   clear element text       xpath=//*[@id="${i}"]
+    \   element text should be           xpath=//*[@id="${i}"]//following-sibling::div[2]       This field is required.
+    input text                       xpath=//*[@id="max_open_bets"]    123.21
+    element text should be           xpath=//*[@id="max_open_bets"]//following-sibling::div[2]    Should be a valid number
+
 
 
 *** Test Cases ***
