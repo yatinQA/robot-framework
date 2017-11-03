@@ -16,15 +16,16 @@ Library            Collections
 Navigate to trading times
 
     Navigate to resources page
-    wait until element is visible   xpath=//*[@id="content"]/div[2]/div/div[2]/div[1]/a
-    click element                   xpath=//*[@id="content"]/div[2]/div/div[2]/div[1]/a
+    wait until element is visible   xpath= //*[@id="content"]/div[3]/div/div[2]/div[1]/a
+    click element                   xpath= //*[@id="content"]/div[3]/div/div[2]/div[1]/a
 
 
 Verify the page is loaded successfuly
 
     sleep  5
     wait until element is visible           xpath=//*[@id="market_1"]/div/div
-    wait until element is visible           xpath=//*[@id="content"]/div[2]/p[2]
+    page should contain                    当社サイトの時間表示は全て、GMT（グリニッジ標準時）に基づきます。
+
 
 verify the markets is correct
     wait until element is visible               xpath=//*[@id="外国為替-0"]/tbody/tr[*]/td[1]

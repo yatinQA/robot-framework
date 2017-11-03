@@ -22,7 +22,7 @@ Navigate to change password
 
 Verify the page is loaded successfuly
 
-    wait until element is visible           xpath=//*[@id="content"]/div[2]/h1
+    wait until element is visible           xpath=//*[@id="content"]/div[3]/h1
     wait until element is visible           xpath=//*[@id="content"]
     wait until element is visible           xpath=//*[@id="frm_change_password"]/fieldset/div[4]/div/div[2]/p/span[2]
     wait until element is visible           xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/div[1]
