@@ -101,6 +101,7 @@ Valid Login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
+    Click Element  xpath=//*[@id="close_ico_banner"]
 
 Valid Login With Email ID
     [Arguments]	  ${email_id}   ${user_password}
@@ -168,7 +169,7 @@ Open xvfb browser then login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
-    click element       close_ico_banner
+    Click Element  xpath=//*[@id="close_ico_banner"]
 
 Open xvfb browser then login using JP account
     Open Browser   ${HOME URL JP}    ${BROWSER}

@@ -44,7 +44,7 @@ ${without_error}            error-msg invisible
 
 Verify the page is loaded successfully
     sleep  5
-    wait Until Page Contains	Financial Information	60
+    wait Until Page Contains	Financial Information	15
 
 
 Verify each field
@@ -84,7 +84,7 @@ Verify nothing to change message appear
 *** Test Cases ***
 
 Check each field can be updated
-    Open xvfb browser then login
+    open xvfb browser then login
     Navigate to financial assessment page
     Verify the page is loaded successfully
     Set financial information   ${original_option}
@@ -95,24 +95,21 @@ Check each field can be updated
     Reload page
     Verify each field   ${without_error}
     Verify the updated information  ${update_option}
-    [Teardown]    Close Browser
+
 
 
 Check each empty field with error
-    Open xvfb browser then login
-    Navigate to financial assessment page
+    reload page
     Verify the page is loaded successfully
     Set financial information   ${original_option}
     Sleep   3
     Set financial information   ${empty_option}
     Verify each field   ${with_error}
     Capture page screenshot         screenshots/financialAssessment_field_with_error.png
-    [Teardown]    Close Browser
 
 
 Check nothing to update
-    Open xvfb browser then login
-    Navigate to financial assessment page
+    reload page
     Verify the page is loaded successfully
     Set financial information   ${original_option}
     Sleep   3
