@@ -45,7 +45,7 @@ Verify the page is loaded successfuly
     page should contain                     Self-Exclusion Facilities
     wait until element is visible           xpath=//*[@id="frm_self_exclusion"]      10
 
-Update self-exlcusion
+Update self-Exclusion
 
     : FOR  ${i}  IN  @{FIELD_ID}
 
@@ -53,7 +53,7 @@ Update self-exlcusion
     \  ${Current_value}             get value       xpath=//*[@id="${i}"]
     \  ${Current_value}        evaluate  ${Current_value} -1
     \   Run keyword if       "${original_value}"== "${empty}"
-        ...    input text       xpath=//*[@id="${i}"]       1000
+        ...    input text       xpath=//*[@id="${i}"]       300000
         ...    ELSE
         ...    input text            xpath=//*[@id="${i}"]       ${Current_value}
 
@@ -108,16 +108,39 @@ Check date validation
     click element                xpath=//*[@id="ui-datepicker-div"]/div/div/select[1]/option[1]
     click element               xpath=//*[@id="ui-datepicker-div"]/div/div/select[2]/option[1]
     click element               xpath=//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[6]/a
+
+Verified self-exclusion is reflected in Limit page
+
+   ${Max_Balance}              get value   max_balance
+   ${Max_OpenPossition}        get value   max_open_bets
+   go to     https://staging.binary.com/en/user/security/limitsws.html
+   wait until page contains                   Trading and Withdrawal Limits
+   wait until element is visible           xpath=//*[@id="client-limits"]      10
+    wait until element is visible           xpath=//*[@id="withdrawal-title"]   10
+    ${USER_ID}      get text                xpath=//*[@id="main-account"]/li/a/div[1]/div[2]
+    element text should be                  xpath=//*[@id="trading-limits"]              ${USER_ID} - Trading Limits
+    element text should be      open-positions  ${Max_OpenPossition}
+
+    ${balance}          get text     account-balance
+    ${balanceupdate}          fetch from left      ${balance}     .
+    ${Final_Max_Balance}          remove string      ${balanceupdate}   ,
+    should be equal        ${Final_Max_Balance}     ${Max_Balance}
+
 *** Test Cases ***
 Check Self Exclusion Page
     open login page in xvfb browser
     login using crypto account
     Navigate to Self Exclusion page
     verify the page is loaded successfuly
+    update self-Exclusion
+    reload page
+     sleep   5
     verify error message
     check date validation
     reload page
     sleep   5
-    update self-exlcusion
+    update self-Exclusion
+    sleep  2
+    verified self-exclusion is reflected in limit page
     capture page screenshot
     [Teardown]    Close Browser
