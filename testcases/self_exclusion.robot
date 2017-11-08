@@ -34,7 +34,7 @@ ${SELF_EXCLUSION_INTRO}     Trading the financial markets can become addictive. 
 Navigate to Self Exclusion page
 
     Navigate to setting&security
-    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[3]/div[1]/a/img
+    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[3]/div[1]/a/img  10
     reload page
     wait until element is visible   xpath=//*[@id="settings_container"]/div/div[3]/div[1]/a
     click element                   xpath=//*[@id="settings_container"]/div/div[3]/div[1]/a
@@ -65,7 +65,9 @@ Update self-Exclusion
      ...    ELSE
      ...    input text       xpath=//*[@id="max_open_bets"]      ${Update_MaxOpenBet}
     click button    btn_submit
+    element should not be visible   error-msg
     wait until page contains    Your changes have been updated.
+
 
 Verify error message
      wait until page contains                ${SELF_EXCLUSION_INTRO}         10
@@ -140,7 +142,6 @@ Check Self Exclusion Page
     reload page
     sleep   5
     update self-Exclusion
-    sleep  2
     verified self-exclusion is reflected in limit page
     capture page screenshot
     [Teardown]    Close Browser

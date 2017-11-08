@@ -53,8 +53,6 @@ Verify the page in JP is loaded successfuly
 
 Verify limit values are correct
 
-    element text should be                  open-positions                                          60
-    element text should be                  account-balance                                         300,000.00
     element text should be                  payout                                                  50,000.00
     element text should be                  payout-per-symbol-and-contract-type                     20,000.00
     element text should be                  xpath=//*[@id="client-limits"]/tbody/tr[6]/td[2]        10,000.00
@@ -70,8 +68,6 @@ Verify limit values are correct
 
 Verify BTC Limit Page
 
-    element text should be                  open-positions                                          60
-    element text should be                  account-balance                                         50.00000000
     element text should be                  payout                                                  1.00000000
     element text should be                  payout-per-symbol-and-contract-type                     2.00000000
     element text should be                  xpath=//*[@id="client-limits"]/tbody/tr[6]/td[2]        2.00000000

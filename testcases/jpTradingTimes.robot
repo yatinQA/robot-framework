@@ -16,7 +16,7 @@ Library            Collections
 Navigate to trading times
 
     Navigate to resources page
-    wait until element is visible   xpath= //*[@id="content"]/div[3]/div/div[2]/div[1]/a
+    wait until element is visible   xpath= //*[@id="content"]/div[3]/div/div[2]/div[1]/a     10
     click element                   xpath= //*[@id="content"]/div[3]/div/div[2]/div[1]/a
 
 
