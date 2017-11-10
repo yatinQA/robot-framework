@@ -8,7 +8,7 @@
 <b>Currently automated tests are already developed for the following pages in binary.com:</b>
 - Login Page
 - <b>Profile</b>: Personal Details, Financial Assessment
-- <b>Security & Limits</b>: Account Password, Cashier Password, Limits, Login History, API Token Page, Authorized Applications 
+- <b>Security & Limits</b>: Account Password, Cashier Password, Limits, Login History, API Token Page, Authorized Applications , Self-Exclusion
 - <b>Trading</b>: Buy Contract, Manual Sell Contract
 - Japan Trading Times
 - Footer: Social Network Mailer Link
@@ -17,6 +17,7 @@
 - Statement Page
 - Portfolio Page
 - Profit Table Page
+
 
 <b>Running the tests:</b>
 

@@ -12,7 +12,7 @@ Navigate to setting&security
     Sleep  5
     Click Element	css=div.account-id
     Click Element	css=li.topMenuSecurity
-    Wait Until Page Contains	Security   10
+    Wait Until Page Contains	Security   15
 
 
 Navigate to JP setting&security

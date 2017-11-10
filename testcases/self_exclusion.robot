@@ -68,6 +68,55 @@ Update self-Exclusion
     element should not be visible   error-msg
     wait until page contains    Your changes have been updated.
 
+Update Crypto self-Exclusion
+
+    : FOR  ${i}  IN  @{FIELD_ID}
+
+    \  ${original_value}            get value       xpath=//*[@id="${i}"]
+    \  ${Current_value}             get value       xpath=//*[@id="${i}"]
+    \  ${Current_value}        evaluate  ${Current_value} -0.00001230
+    \  ${Current_value_new}       convert to string     ${Current_value}
+    \  ${Crypto_value}      convert to string     50.00000000
+    \   Run keyword if       "${original_value}"== "${empty}"
+        ...    input     xpath=//*[@id="${i}"]        ${CryptoNO}
+        ...    ELSE
+        ...    input text            xpath=//*[@id="${i}"]       ${Current_value_new}
+
+    ${original_Max_OpenValue}        get value       xpath=//*[@id="max_open_bets"]
+    ${Update_MaxOpenBet}             get value       xpath=//*[@id="max_open_bets"]
+    ${Update_MaxOpenBet}             evaluate  ${original_Max_OpenValue} -1
+    Run keyword if                  "${original_Max_OpenValue}"== "${empty}"
+     ...    input text       xpath=//*[@id="max_open_bets"]       60
+     ...    ELSE
+     ...    input text       xpath=//*[@id="max_open_bets"]      ${Update_MaxOpenBet}
+    click button    btn_submit
+    element should not be visible   error-msg
+    wait until page contains    Your changes have been updated.
+
+Verify crypto error message
+     wait until page contains                ${SELF_EXCLUSION_INTRO}         10
+    : FOR  ${i}  IN  @{FIELD_ID}
+    \  ${original_value}             get value                xpath=//*[@id="${i}"]
+    \  ${Current_value}             get value             xpath=//*[@id="${i}"]
+    \  ${Current_value}        evaluate  ${Current_value} +1.00000000
+    \  ${Current_value_new}       convert to string     ${Current_value}
+    \   Run keyword if       "${original_value}"!= "${empty}"
+        ...    input text            xpath=//*[@id="${i}"]       ${Current_value_new}
+    \   ${CONVER_NO}             get text         xpath=//*[@id="${i}"]//following-sibling::div[2]
+    \   ${final_msg}            remove string  ${CONVER_NO}     ,
+    \   should be equal       ${final_msg}      Should be between 0 and ${original_value}
+    \   reload page
+    \   sleep       5
+    \   wait until page contains       ${SELF_EXCLUSION_INTRO}         10
+    \   run keyword if       "${original_value}"!= "${empty}"
+        ...    input text            xpath=//*[@id="${i}"]      444.888888888
+    \   element text should be           xpath=//*[@id="${i}"]//following-sibling::div[2]       Only 0, 8 decimal points are allowed.
+    \   clear element text       xpath=//*[@id="${i}"]
+    \   element text should be           xpath=//*[@id="${i}"]//following-sibling::div[2]       This field is required.
+    input text                       xpath=//*[@id="max_open_bets"]    123.21
+    element text should be           xpath=//*[@id="max_open_bets"]//following-sibling::div[2]               Should be a valid number
+    input text                       xpath=//*[@id="session_duration_limit"]    123.21
+    element text should be           xpath=//*[@id="session_duration_limit"]//following-sibling::div[2]    Should be a valid number
 
 Verify error message
      wait until page contains                ${SELF_EXCLUSION_INTRO}         10
@@ -128,6 +177,22 @@ Verified self-exclusion is reflected in Limit page
     ${Final_Max_Balance}          remove string      ${balanceupdate}   ,
     should be equal        ${Final_Max_Balance}     ${Max_Balance}
 
+Verified self-exclusion crypto is reflected in Limit page
+
+   ${Max_BalanceInSelfExclusion}              get value   max_balance
+   ${Max_OpenPossitionInSelfExclusion}        get value   max_open_bets
+   go to     https://staging.binary.com/en/user/security/limitsws.html
+   wait until page contains                   Trading and Withdrawal Limits
+   wait until element is visible           xpath=//*[@id="client-limits"]      10
+    wait until element is visible           xpath=//*[@id="withdrawal-title"]   10
+    ${USER_ID}      get text                xpath=//*[@id="main-account"]/li/a/div[1]/div[2]
+    element text should be                  xpath=//*[@id="trading-limits"]              ${USER_ID} - Trading Limits
+    element text should be      open-positions  ${Max_OpenPossitionInSelfExclusion}
+
+    ${balance}          get text     account-balance
+    ${Final_Max_Balance}          remove string      ${balance}   ,
+    should contain        ${Final_Max_Balance}     ${Max_BalanceInSelfExclusion}
+
 *** Test Cases ***
 Check Self Exclusion Page
     open login page in xvfb browser
@@ -143,5 +208,21 @@ Check Self Exclusion Page
     sleep   5
     update self-Exclusion
     verified self-exclusion is reflected in limit page
+    capture page screenshot
+
+
+Check Self Exclusion for Crypto Account
+
+    switch to btc account
+    navigate to self exclusion page
+    verify the page is loaded successfuly
+    update crypto self-exclusion
+    reload page
+    sleep   5
+    verify crypto error message
+    reload page
+    sleep   5
+    update crypto self-exclusion
+    verified self-exclusion crypto is reflected in limit page
     capture page screenshot
     [Teardown]    Close Browser
