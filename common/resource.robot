@@ -154,6 +154,26 @@ Switch to MLT Account
     click element  css=div.account-id
     click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"MLT")]/li
     Wait Until Page Contains	Portfolio   10
+    sleep  5
+
+
+Switch to MX Account
+
+    sleep  10
+    click element  css=div.account-id
+    click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"MX")]/li
+    Wait Until Page Contains	Portfolio   10
+    sleep  5
+    click button    xpath=//*[@id="reality_check_nav"]/button
+
+Switch to MF Account
+
+    sleep  10
+    click element  css=div.account-id
+    click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"MF")]/li
+    Wait Until Page Contains	Portfolio   10
+    sleep  5
+    click button    xpath=//*[@id="reality_check_nav"]/button
 
 
 Open xvfb browser then login
@@ -216,7 +236,6 @@ Login using MLT/MF Account
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
     sleep  5
-    click button    xpath=//*[@id="reality_check_nav"]/button
 
 
 Login using MX Account
@@ -228,7 +247,7 @@ Login using MX Account
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
     sleep  3
-    click button    xpath=//*[@id="reality_check_nav"]/button
+
 
 
 

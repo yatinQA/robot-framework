@@ -153,12 +153,12 @@ Check date validation
     click element               timeout_until_date
     click element                xpath=//*[@id="ui-datepicker-div"]/div/div/select[1]/option[1]
     click element               xpath=//*[@id="ui-datepicker-div"]/div/div/select[2]/option[1]
-    click element               xpath=//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[6]/a
+    click element               xpath=//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[6]/a
     element should not be visible   xpath=//*[@id="frm_self_exclusion"]/fieldset/div[10]/div[2]/div[1]/div[1]/div
     click element               exclude_until
     click element                xpath=//*[@id="ui-datepicker-div"]/div/div/select[1]/option[1]
     click element               xpath=//*[@id="ui-datepicker-div"]/div/div/select[2]/option[1]
-    click element               xpath=//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[6]/a
+    click element               xpath=//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[6]/a
 
 Verified self-exclusion is reflected in Limit page
 
