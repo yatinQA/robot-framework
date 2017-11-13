@@ -101,7 +101,7 @@ Valid Login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
-    Click Element  xpath=//*[@id="close_ico_banner"]
+    execute javascript      document.getElementById('close_ico_banner').click()
 
 Valid Login With Email ID
     [Arguments]	  ${email_id}   ${user_password}
@@ -159,6 +159,7 @@ Switch to MLT Account
 Open xvfb browser then login
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
+    execute javascript      document.getElementById('close_ico_banner').click()
     wait until element is visible  btn_login
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
@@ -169,7 +170,7 @@ Open xvfb browser then login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
-    Click Element  xpath=//*[@id="close_ico_banner"]
+
 
 Open xvfb browser then login using JP account
     Open Browser   ${HOME URL JP}    ${BROWSER}
