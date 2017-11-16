@@ -93,7 +93,7 @@ Buy a contract
 
 *** Test Cases ***
 Check Portfolio Page
-    open xvfb browser then login
+    valid login
     switch virtual account
     sleep  5
     buy a contract
