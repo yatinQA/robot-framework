@@ -244,7 +244,6 @@ Check Limit Page for MLT/MF Account
 
     open login page in xvfb browser
     login using mlt/mf account
-    switch to mf account
     navigate to limit page
     verify the page is loaded successfuly
     verify mf limit page
@@ -257,7 +256,6 @@ Check Limit Page for MXAccount
 
     open login page in xvfb browser
     login using MX account
-    switch to mx account
     navigate to limit page
     verify the page is loaded successfuly
     verify MX limit page

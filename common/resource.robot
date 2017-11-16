@@ -101,7 +101,7 @@ Valid Login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
-
+    execute javascript      document.getElementById('close_ico_banner').click()
 
 Valid Login With Email ID
     [Arguments]	  ${email_id}   ${user_password}
@@ -164,7 +164,7 @@ Switch to MX Account
     click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"MX")]/li
     Wait Until Page Contains	Portfolio   10
     sleep  5
-    click button    xpath=//*[@id="reality_check_nav"]/button
+
 
 Switch to MF Account
 
@@ -173,12 +173,13 @@ Switch to MF Account
     click element  xpath=//*[@id="all-accounts"]/li/ul/div[1]/a[contains(.,"MF")]/li
     Wait Until Page Contains	Portfolio   10
     sleep  5
-    click button    xpath=//*[@id="reality_check_nav"]/button
+
 
 
 Open xvfb browser then login
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
+    execute javascript      document.getElementById('close_ico_banner').click()
     wait until element is visible  btn_login
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
@@ -210,6 +211,7 @@ Open Login page in xvfb browser
 
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
+    execute javascript      document.getElementById('close_ico_banner').click()
     wait until element is visible  btn_login
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
@@ -235,6 +237,7 @@ Login using MLT/MF Account
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
     sleep  5
+    click button    xpath=//*[@id="reality_check_nav"]/button
 
 
 Login using MX Account
@@ -246,6 +249,7 @@ Login using MX Account
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
     sleep  3
+    click button    xpath=//*[@id="reality_check_nav"]/button
 
 
 

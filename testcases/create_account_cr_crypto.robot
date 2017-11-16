@@ -12,15 +12,16 @@ Library 	      OperatingSystem
 ${country}	          Indonesia
 ${country_id}		  id
 ${currency_fiat}      USD
-@{crypto_list}=       BCH
-...                   BTC
+@{crypto_list}=       BTC
 ...                   ETH
 ...                   LTC
+
 
 *** Keywords ***
 Create Crypto Accounts
     [Arguments]  ${crypto_currency}
-    Click Element  css=div.account-id
+    wait until page contains          USD Account     10
+    Click Element  xpath =//*[@id="main-account"]/li/a/div[1]/div[2]
     Click Element  xpath=//*[@id="user_accounts"]/li
     wait until page contains  Create New Account   30
     reload page
@@ -54,6 +55,10 @@ Create CR Fiat Account
     Page Should Contain    You have successfully created your account!
     Set Currency   ${currency_fiat}
     wait until page contains  ${currency_fiat} Account   30
+    capture page screenshot
+    reload page
+    wait until page contains    USD Account     10
+    capture page screenshot
 
 Create CR Crypto Account
     : FOR  ${crypto}  IN  @{crypto_list}
