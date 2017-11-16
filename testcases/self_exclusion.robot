@@ -153,12 +153,11 @@ Check date validation
     click element               timeout_until_date
     click element                xpath=//*[@id="ui-datepicker-div"]/div/div/select[1]/option[1]
     click element               xpath=//*[@id="ui-datepicker-div"]/div/div/select[2]/option[1]
-    click element               xpath=//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[6]/a
-    element should not be visible   xpath=//*[@id="frm_self_exclusion"]/fieldset/div[10]/div[2]/div[1]/div[1]/div
+    click element               xpath=//*[@id="ui-datepicker-div"]//following::a[contains(@class,'ui-state-highlight')]
     click element               exclude_until
     click element                xpath=//*[@id="ui-datepicker-div"]/div/div/select[1]/option[1]
     click element               xpath=//*[@id="ui-datepicker-div"]/div/div/select[2]/option[1]
-    click element               xpath=//*[@id="ui-datepicker-div"]/table/tbody/tr[3]/td[6]/a
+    click element               xpath=//*[@id="ui-datepicker-div"]//following::a[contains(@class,'ui-state-default')]
 
 Verified self-exclusion is reflected in Limit page
 
@@ -194,7 +193,7 @@ Verified self-exclusion crypto is reflected in Limit page
     should contain        ${Final_Max_Balance}     ${Max_BalanceInSelfExclusion}
 
 *** Test Cases ***
-Check Self Exclusion Page
+Check Self Exclusion
     open login page in xvfb browser
     login using crypto account
     Navigate to Self Exclusion page

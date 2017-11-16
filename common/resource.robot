@@ -101,7 +101,7 @@ Valid Login
     ${GRANT} =          run keyword and return status  page should not contain   Review Permissions
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	Portfolio   10
-    execute javascript      document.getElementById('close_ico_banner').click()
+
 
 Valid Login With Email ID
     [Arguments]	  ${email_id}   ${user_password}
@@ -179,7 +179,6 @@ Switch to MF Account
 Open xvfb browser then login
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
-    execute javascript      document.getElementById('close_ico_banner').click()
     wait until element is visible  btn_login
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
