@@ -37,6 +37,7 @@ Verify recent bought contract added in portfolio page
 
     page should contain         ${CONTRACT_REF_ID}
     element should be visible   xpath=//*[@id="portfolio-table"]
+    sleep   5
     element should be visible   xpath=//*[@id="portfolio-body"]/tr[contains(.,"${CONTRACT_REF_ID}")]/td[6]/button
     ${PURCHASE_PRICE_PORTFOLIO}     get text       xpath=//*[@id="portfolio-body"]/tr[contains(.,"${CONTRACT_REF_ID}")]/td[4]
     should be equal     ${PURCHASE_PRICE}       ${PURCHASE_PRICE_PORTFOLIO}
