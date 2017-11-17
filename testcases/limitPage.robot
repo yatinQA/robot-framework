@@ -25,9 +25,9 @@ Navigate to limit page
 Navigate to JP limit page
 
     Navigate to JP setting&security
-    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a/img
+    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a/img     10
     reload page
-    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a/img
+    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a/img     10
     click element                   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a
 
 
@@ -88,7 +88,8 @@ Verify BTC Limit Page
     page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is BTC
 
 
-Verify BCH Limit Page
+
+# Verify BCH Limit Page
 
 
     element text should be                  open-positions                                          60
@@ -230,9 +231,9 @@ Check Limit Page for CR Account
     switch to BTC Account
     verify the page is loaded successfuly
     verify BTC limit page
-    switch to bch account
-    verify the page is loaded successfuly
-    verify BCH limit page
+    #switch to bch account
+    #verify the page is loaded successfuly
+    #verify BCH limit page
     switch to ltc account
     verify the page is loaded successfuly
     verify LTC limit page
