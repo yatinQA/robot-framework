@@ -61,9 +61,9 @@ Verify recent sold removed from portfolio page
     ${BALANCE_AFTERSOLD}      get text  xpath=//*[@id="main-account"]/li/a/div[1]/div[3]
     ${BALANCE_AFTERSOLDPORTFOLIO}    get text        xpath=//*[@id="portfolio-balance"]
     should be equal     ${BALANCE_AFTERSOLD}       ${BALANCE_AFTERSOLDPORTFOLIO}
-    wait until element is not visible       xpath=//*[@id="portfolio-body"]/tr[contains(.,"${CONTRACT_REF_ID}")]/td[6]/button      10
+    #wait until element is not visible       xpath=//*[@id="portfolio-body"]/tr[contains(.,"${CONTRACT_REF_ID}")]/td[6]/button      10
     page should not contain                 ${CONTRACT_REF_ID}
-    element should not be visible           xpath=//*[@id="portfolio-body"]/tr[contains(.,"${CONTRACT_REF_ID}")]/td[6]/button
+    #element should not be visible           xpath=//*[@id="portfolio-body"]/tr[contains(.,"${CONTRACT_REF_ID}")]/td[6]/button
     ${NO_CONTRACT}  run keyword and return status   element should be visible      xpath=//*[@id="portfolio-no-contract"]
     run keyword if      ${NO_CONTRACT}      Verify no open positions
 
