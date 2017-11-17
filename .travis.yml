@@ -9,7 +9,7 @@ cache:
   - $HOME/.m2
       
 script: 
- - robot testcases/*.robot
+ - robot testcases/portfolioPage.robot
 
 before_install:
  - sudo apt-get update
