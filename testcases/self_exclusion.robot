@@ -78,7 +78,7 @@ Update Crypto self-Exclusion
     \  ${Current_value_new}       convert to string     ${Current_value}
     \  ${Crypto_value}      convert to string     50.00000000
     \   Run keyword if       "${original_value}"== "${empty}"
-        ...    input     xpath=//*[@id="${i}"]        ${CryptoNO}
+        ...    input text            xpath=//*[@id="${i}"]        ${Crypto_value}
         ...    ELSE
         ...    input text            xpath=//*[@id="${i}"]       ${Current_value_new}
 
@@ -107,7 +107,7 @@ Verify crypto error message
     \   should be equal       ${final_msg}      Should be between 0 and ${original_value}
     \   reload page
     \   sleep       5
-    \   wait until page contains       ${SELF_EXCLUSION_INTRO}         10
+    \   wait until page contains       ${SELF_EXCLUSION_INTRO}         20
     \   run keyword if       "${original_value}"!= "${empty}"
         ...    input text            xpath=//*[@id="${i}"]      444.888888888
     \   element text should be           xpath=//*[@id="${i}"]//following-sibling::div[2]       Only 0, 8 decimal points are allowed.

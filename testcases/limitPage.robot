@@ -89,7 +89,7 @@ Verify BTC Limit Page
 
 
 
-# Verify BCH Limit Page
+Verify BCH Limit Page
 
 
     element text should be                  open-positions                                          60
