@@ -25,9 +25,9 @@ Navigate to limit page
 Navigate to JP limit page
 
     Navigate to JP setting&security
-    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a/img
+    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a/img     10
     reload page
-    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a/img
+    wait until element is visible   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a/img     10
     click element                   xpath=//*[@id="settings_container"]/div/div[4]/div[1]/a
 
 
@@ -53,8 +53,6 @@ Verify the page in JP is loaded successfuly
 
 Verify limit values are correct
 
-    element text should be                  open-positions                                          60
-    element text should be                  account-balance                                         300,000.00
     element text should be                  payout                                                  50,000.00
     element text should be                  payout-per-symbol-and-contract-type                     20,000.00
     element text should be                  xpath=//*[@id="client-limits"]/tbody/tr[6]/td[2]        10,000.00
@@ -70,8 +68,6 @@ Verify limit values are correct
 
 Verify BTC Limit Page
 
-    element text should be                  open-positions                                          60
-    element text should be                  account-balance                                         50.00000000
     element text should be                  payout                                                  1.00000000
     element text should be                  payout-per-symbol-and-contract-type                     2.00000000
     element text should be                  xpath=//*[@id="client-limits"]/tbody/tr[6]/td[2]        2.00000000
@@ -87,9 +83,10 @@ Verify BTC Limit Page
 
 
 
-    page should contain                     Your withdrawal limit is BTC 10,000.00.
-    page should contain                     You have already withdrawn BTC 0.00000000.
-    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is BTC 10,000.00.
+    page should contain                     Your withdrawal limit is BTC
+    page should contain                     You have already withdrawn BTC
+    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is BTC
+
 
 
 Verify BCH Limit Page
@@ -112,9 +109,9 @@ Verify BCH Limit Page
 
 
 
-    page should contain                     Your withdrawal limit is BCH 10,000.00.
-    page should contain                     You have already withdrawn BCH 0.00000000.
-    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is BCH 10,000.00.
+    page should contain                     Your withdrawal limit is BCH
+    page should contain                     You have already withdrawn BCH
+    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is BCH
 
 Verify LTC limit Page
 
@@ -135,9 +132,9 @@ Verify LTC limit Page
 
 
 
-    page should contain                     Your withdrawal limit is LTC 10,000.00.
-    page should contain                     You have already withdrawn LTC 0.00000000.
-    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is LTC 10,000.00.
+    page should contain                     Your withdrawal limit is LTC
+    page should contain                     You have already withdrawn LTC
+    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is LTC
 
 Verify MF limit Page
 
@@ -181,9 +178,9 @@ Verify MLT limit Page
 
 
 
-    page should contain                     Your withdrawal limit is EUR 2,000.00 (or equivalent in other currency).
-    page should contain                     You have already withdrawn the equivalent of EUR 0.00.
-    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is EUR 2,000.00 (or equivalent in other currency).
+    page should contain                     Your withdrawal limit is USD 2,000.00 (or equivalent in other currency).
+    page should contain                     You have already withdrawn the equivalent of USD 0.00.
+    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is USD 2,000.00 (or equivalent in other currency).
 
 Verify MX limit Page
 
@@ -203,9 +200,9 @@ Verify MX limit Page
     element text should be                  xpath=//*[@id="client-limits"]/tbody/tr[contains(.,"OTC Stocks")]/td[2]                   1,000.00
     element text should be                  xpath=//*[@id="client-limits"]/tbody/tr[contains(.,"Volatility Indices")]/td[2]           500,000.00
 
-    page should contain                     Your 30 day withdrawal limit is currently EUR 3,000.00 (or equivalent in other currency).
-    page should contain                     You have already withdrawn the equivalent of EUR 0.00 in aggregate over the last 30 days.
-    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is EUR 3,000.00 (or equivalent in other currency).
+    page should contain                     Your 30 day withdrawal limit is currently GBP 3,000.00 (or equivalent in other currency).
+    page should contain                     You have already withdrawn the equivalent of GBP 0.00 in aggregate over the last 30 days.
+    page should contain                     Therefore your current immediate maximum withdrawal (subject to your account having sufficient funds) is GBP 3,000.00 (or equivalent in other currency).
 
 verify JP limit Page
 
@@ -234,9 +231,9 @@ Check Limit Page for CR Account
     switch to BTC Account
     verify the page is loaded successfuly
     verify BTC limit page
-    switch to bch account
-    verify the page is loaded successfuly
-    verify BCH limit page
+    #switch to bch account
+    #verify the page is loaded successfuly
+    #verify BCH limit page
     switch to ltc account
     verify the page is loaded successfuly
     verify LTC limit page
