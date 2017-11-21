@@ -21,6 +21,7 @@ ${currency_fiat}      USD
 Create Crypto Accounts
     [Arguments]  ${crypto_currency}
     wait until page contains          USD Account     10
+    wait until element is visible	xpath =//*[@id="main-account"]/li/a/div[1]/div[2]  30
     Click Element  xpath =//*[@id="main-account"]/li/a/div[1]/div[2]
     Click Element  xpath=//*[@id="user_accounts"]/li
     wait until page contains  Create New Account   30
