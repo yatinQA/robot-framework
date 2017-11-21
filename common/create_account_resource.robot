@@ -69,7 +69,7 @@ Retrieve Token
 Create Virtual Account 
     [Arguments]  ${country_id}
 
-    ${random_int}=        Evaluate	random.randint(0, 999)   modules=random,sys
+    ${random_int}=        Evaluate	random.randint(0, 99999)   modules=random,sys
     set global variable   ${email_id}          test_qa_${country_id}_${random_int}@binary.com
     Input Text    email   ${email_id}
     Click Element   id=btn_verify_email
