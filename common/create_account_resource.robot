@@ -20,6 +20,7 @@ ${last_name}	      last
 ${account_opening_reason}	Speculative
 ${address_line_1}	123 Abc
 ${address_city}		Abc City
+${address_postcode}     45678
 ${phone}	      	+62456787612
 ${secret_answer}	test answer
 ${row}              2
@@ -128,6 +129,28 @@ Input Fields for CR Real Money Account Opening
     Scroll Page To Middle
     Select Checkbox	not_pep
     Select Checkbox	tnc
+
+Input Fields for MX Real Money Account Opening
+    [Arguments]  ${first_name}
+    Input Text	first_name    ${first_name}
+    Input Text	last_name     ${last_name}
+    ${elem}=   Get Value   last_name
+    #get birth date equal to current date minus 30 days to verify age so that we get error too young to open account
+    ${birth_date}=   Get Current Date	local    -30 days   %d %b, %Y
+    Execute JavaScript  document.getElementById('date_of_birth').value='${birth_date}'
+    Select From List	id=account_opening_reason	${account_opening_reason}
+    Input Text	address_line_1	${address_line_1}
+    Input Text  address_city	${address_city}
+    Input Text  address_postcode	${address_postcode}
+    Input Text	phone	${phone}
+    Input Text 	secret_answer 	${secret_answer}
+    Scroll Page To Middle
+    Select Checkbox	not_pep
+    Select Checkbox	tnc
+
+Create Standard Real Money Account
+    select radio button     account_type    account_type_default
+    click button    btn_submit
 
 Logout and Login
     Click Element	css=div.account-id
