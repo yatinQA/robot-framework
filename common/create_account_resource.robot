@@ -113,7 +113,8 @@ Set Currency
     Sleep   3
     click element  xpath=//*[@id="frm_set_currency"]/button
 
-Input Fields for CR Real Money Account Opening
+#CR, MLT
+Input Fields for Real Money Account Opening
     [Arguments]  ${first_name}
     Input Text	first_name    ${first_name} 
     Input Text	last_name     ${last_name}
