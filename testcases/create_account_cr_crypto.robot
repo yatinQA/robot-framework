@@ -44,7 +44,7 @@ Create CR Fiat Account
     ${random_first_name}=	Generate Random String	5	[LETTERS]
     set global variable   ${first_name}           test-cr-${random_first_name}
     Sleep   5
-    Input Fields for CR Real Money Account Opening		${first_name}
+    Input Fields for Real Money Account Opening		${first_name}
     #Update birthdate to be able to open account
     Scroll Page To Top
     Sleep  5

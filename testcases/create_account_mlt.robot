@@ -1,20 +1,20 @@
 *** Settings ***
-Documentation     A test suite with a single test for creating CR account.
+Documentation       A test suite with a single test for creating MLT account.
 ...
-...               This test has a workflow that is created using keywords in
-...               the imported resource file.
-Resource          ../common/resource.robot
-Resource	  ../common/create_account_resource.robot
-Library 	      OperatingSystem
+...                 This test has a workflow that is created using keywords in
+...                 the imported resource file.
+Resource            ../common/resource.robot
+Resource	        ../common/create_account_resource.robot
+Library 	        OperatingSystem
 
 
 *** Variables ***
-${country}	          Indonesia
-${country_id}		  id
+${country}	          Belgium
+${country_id}		  be
 ${currency_fiat}      EUR
 
 *** Test Cases ***
-Create CR Account
+Create MLT Account
     Prepare Endpoint Environment
     Create Virtual Account  ${country_id}
 
@@ -27,12 +27,12 @@ Create CR Account
 	#click open a real account
     #Click Element	xpath=//*[@id="topbar-msg"]/a/span
 
-    Wait Until Page Contains	Family name	30
+    Create Standard Real Money Account
+    Wait Until Page Contains	Family name   30
     ${random_first_name}=	Generate Random String	5	[LETTERS]
-    set global variable   ${first_name}           test-cr-${random_first_name}
+    set global variable   ${first_name}     test-mlt-${random_first_name}
     Sleep   5
-    Verify CR Real Money Account Opening Fields
-    Input Fields for Real Money Account Opening		${first_name}
+    Input Fields for MX Real Money Account Opening		${first_name}
     Click Element	xpath=//*[@id="frm_real"]/div/button
     Sleep  5
     Page Should Contain   Sorry, you are too young to open an account
@@ -45,8 +45,10 @@ Create CR Account
     Click Element	xpath=//*[@id="frm_real"]/div/button
     Sleep  5
     wait until element is visible   xpath=//*[@id="${currency_fiat}"]   60
+    #Reality Check
+    click element   xpath=//*[@id="reality_check_nav"]/button
     Page Should Contain    You have successfully created your account!
-    capture page screenshot   screenshots/create_CR_acc.png
+    capture page screenshot   screenshots/create_MLT_acc.png
     Set Currency   ${currency_fiat}
-    wait until page contains  ${currency_fiat} Account   30
+    wait until page contains  Gaming Account   30
     [Teardown]    Close Browser
