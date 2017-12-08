@@ -11,6 +11,8 @@ Force Tags       BrowserStack
 
 ${Chrome}      (Chrome 49)
 ${Firefox}     (Firefox 51)
+${Safari}      (Safari 8)
+${Opera}       (Opera 41)
 
 *** Keywords ***
 
@@ -32,4 +34,17 @@ Verifiy message in Old Chrome
     Open Binary Site    BROWSER=Chrome  BROWSER_VERSION=49.0  OS=OS X  OS_VERSION=Sierra
     sleep    ${Delay}
     check warning message    ${Chrome}
+    [Teardown]    Close Browser
+
+Verifiy message in Old Safari
+    Open Binary Site    BROWSER=Safari  BROWSER_VERSION=8.0  OS=OS X  OS_VERSION=Yosemite
+    sleep    ${Delay}
+    check warning message    ${Safari}
+    [Teardown]    Close Browser
+
+
+Verifiy message in Old Opera
+    Open Binary Site    BROWSER=Opera  BROWSER_VERSION=12.16  OS=Windows  OS_VERSION=7
+    sleep    ${Delay}
+    check warning message    ${Opera}
     [Teardown]    Close Browser
