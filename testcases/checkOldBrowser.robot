@@ -42,9 +42,3 @@ Verifiy message in Old Safari
     check warning message    ${Safari}
     [Teardown]    Close Browser
 
-
-Verifiy message in Old Opera
-    Open Binary Site    BROWSER=Opera  BROWSER_VERSION=12.16  OS=Windows  OS_VERSION=7
-    sleep    ${Delay}
-    check warning message    ${Opera}
-    [Teardown]    Close Browser
