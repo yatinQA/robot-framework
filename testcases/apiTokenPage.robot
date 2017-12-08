@@ -23,7 +23,7 @@ Navigate to API Token Page
 
 Verify the page is loaded successfuly
 
-    wait until element is visible           xpath=//*[@id="api_token"]/h1
+    #wait until element is visible           xpath=//*[@id="api_token"]/h1
     wait until element is visible           xpath=//*[@id="api_token"]/ul
     wait until element is visible           xpath=//*[@id="token_form"]/form
     sleep  2
@@ -38,8 +38,10 @@ Verify required fields
     click button              xpath=//*[@id="btn_submit"]
     ${SCOPE_SELECTED}         run keyword and return status  checkbox should be selected         xpath=//*[@id="chk_scopes_read"]
     run keyword if            ${SCOPE_SELECTED}   click read scope
-    element text should be    xpath=//*[@id="token_form"]/form/fieldset/div[2]/div[2]/div                ${SCOPE_REQUIRED_MSG}
-    element text should be    xpath=//*[@id="token_form"]/form/fieldset/div[1]/div[2]/div                ${REQUIRED_FIELD_MSG}
+    #element text should be    xpath=//*[@id="token_form"]/form/fieldset/div[2]/div[2]/div                ${SCOPE_REQUIRED_MSG}
+    element text should be    xpath=//*[@id="token_form"]/form/fieldset/div[2]/div[2]/p                ${SCOPE_REQUIRED_MSG}
+    #element text should be    xpath=//*[@id="token_form"]/form/fieldset/div[1]/div[2]/div                ${REQUIRED_FIELD_MSG}
+    element text should be    xpath=//*[@id="token_form"]/form/fieldset/div[1]/div[2]/p                ${REQUIRED_FIELD_MSG}
 
 Click Read Scope
     sleep       2
@@ -59,9 +61,9 @@ Click Scopes
 Verify invalid input
 
     input text                      txt_name                                                     a
-    element text should be          xpath=//*[@id="token_form"]/form/fieldset/div[1]/div[2]/div       You should enter 2-32 characters.
+    element text should be          xpath=//*[@id="token_form"]/form/fieldset/div[1]/div[2]/p       You should enter 2-32 characters.
     input text                      txt_name                ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="token_form"]/form/fieldset/div[1]/div[2]/div                 ${INV_CHAR_INPUT_MSG}
+    element text should be          xpath=//*[@id="token_form"]/form/fieldset/div[1]/div[2]/p                 ${INV_CHAR_INPUT_MSG}
 
 Add new token
     reload page

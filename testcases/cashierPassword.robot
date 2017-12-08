@@ -24,26 +24,26 @@ Verify required fields
     ${unlock}=                run keyword and return status        element text should be         //*[@id="lockInfo"]        ${CASHIER_LOCKED_MSG}
     run keyword if            ${unlock}   Unlock cashier
     click button              xpath=//*[@id="btn_submit"]
-    element text should be    xpath=//*[@id="frm_cashier_password"]/fieldset/div[2]/div[2]/div[2]               ${REQUIRED_FIELD_MSG}
-    element text should be    xpath=//*[@id="repeat_password_row"]/div[2]/div                                   ${REQUIRED_FIELD_MSG}
+    element text should be    xpath=//*[@id="frm_cashier_password"]/fieldset/div[2]/div[2]/p[2]               ${REQUIRED_FIELD_MSG}
+    element text should be    xpath=//*[@id="repeat_password_row"]/div[2]/p                                   ${REQUIRED_FIELD_MSG}
 
 Verify invalid input
 
     input text                      xpath=//*[@id='cashier_password']                                           ${MIN_INPUT}
-    element text should be          xpath=//*[@id='frm_cashier_password']/fieldset/div[2]/div[2]/div[2]         ${MIN_INPUT_MSG}
+    element text should be          xpath=//*[@id='frm_cashier_password']/fieldset/div[2]/div[2]/p[2]         ${MIN_INPUT_MSG}
     clear element text              xpath=//*[@id='cashier_password']
     input text                      xpath=//*[@id='cashier_password']                                           ${INV_INPUT}
-    element text should be          xpath=//*[@id='frm_cashier_password']/fieldset/div[2]/div[2]/div[2]         ${PASS_REQUIREMENT_MSG}
+    element text should be          xpath=//*[@id='frm_cashier_password']/fieldset/div[2]/div[2]/p[2]         ${PASS_REQUIREMENT_MSG}
     clear element text              xpath=//*[@id='cashier_password']
     input text                      xpath=//*[@id='cashier_password']                                           ${VALID_PASS}
     input text                      xpath=//*[@id="repeat_cashier_password"]                                    ${MIN_INPUT}
-    element text should be          xpath=//*[@id='repeat_password_row']/div[2]/div                             ${UNMATCH_PASS_MSG}
+    element text should be          xpath=//*[@id='repeat_password_row']/div[2]/p                             ${UNMATCH_PASS_MSG}
     clear element text              xpath=//*[@id='cashier_password']
     clear element text              xpath=//*[@id="repeat_cashier_password"]
     input text                      xpath=//*[@id='cashier_password']                                           ${VALID PASSWORD}
     input text                      xpath=//*[@id="repeat_cashier_password"]                                    ${VALID PASSWORD}
     click button                    xpath=//*[@id="btn_submit"]
-    wait until element is visible   xpath=//*[@id="form_error"]
+    wait until element is visible   xpath=//*[@id="form_error"]    10
     element text should be          xpath=//*[@id="form_error"]                                                  ${DIFF_PASS_MSG}
 
 Lock cashier

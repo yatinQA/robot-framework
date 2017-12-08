@@ -47,33 +47,33 @@ Verify required fields
     clear element text        phone
     wait until element is enabled  btn_update
     click button              btn_update
-    wait until element is visible  xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[1]/div[2]/div
-    element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[1]/div[2]/div                  ${REQUIRED_FIELD_MSG}
-    element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[3]/div[2]/div                  ${REQUIRED_FIELD_MSG}
-    element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[6]/div[2]/div                  ${REQUIRED_FIELD_MSG}
+    wait until element is visible  xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[1]/div[2]/p
+    element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[1]/div[2]/p               ${REQUIRED_FIELD_MSG}
+    element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[3]/div[2]/p                  ${REQUIRED_FIELD_MSG}
+    element text should be    xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[6]/div[2]/p                  ${REQUIRED_FIELD_MSG}
 
 Verify invalid input
 
     clear element text              tax_identification_number
     input text                      tax_identification_number                                                    ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[2]/div[2]/div[2]/div            ${INV_CHAR_TAX_NO_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[2]/div[2]/div[2]/p            ${INV_CHAR_TAX_NO_MSG}
     input text                      address_line_1                                                               ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[1]/div[2]/div            ${INV_CHAR_ADRRESS_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[1]/div[2]/p            ${INV_CHAR_ADRRESS_MSG}
     clear element text              address_line_2
     input text                      address_line_2                                                               ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[2]/div[2]/div            ${INV_CHAR_ADRRESS_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[2]/div[2]/p            ${INV_CHAR_ADRRESS_MSG}
     clear element text              address_city
     input text                      address_city                                                                 ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[3]/div[2]/div            ${INV_CHAR_CITY_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[3]/div[2]/p            ${INV_CHAR_CITY_MSG}
     clear element text              address_postcode
     input text                      address_postcode                                                             ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[5]/div[2]/div            ${INV_CHAR_ZIP_NO_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[5]/div[2]/p            ${INV_CHAR_ZIP_NO_MSG}
     clear element text              phone
     input text                      phone                                                                         ${INV_CHAR_INPUT}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[6]/div[2]/div             ${INV_CHAR_PHONE_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[6]/div[2]/p             ${INV_CHAR_PHONE_MSG}
     clear element text              phone
     input text                      phone                                                                         ${MIN_INPUT_NO}
-    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[6]/div[2]/div             ${MIN_PHONE_NO_MSG}
+    element text should be          xpath=//*[@id="frmPersonalDetails"]/fieldset[3]/div[6]/div[2]/p             ${MIN_PHONE_NO_MSG}
 clear tax residence
     click element         xpath=//*[@id="frmPersonalDetails"]/fieldset[2]/div[1]/div[2]/span/span[1]/span/ul/li[*]/span
 
