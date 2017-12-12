@@ -15,8 +15,8 @@ ${error_msg}                This field is required.
 ${empty_option}             option[1]
 ${original_option}          option[2]
 ${update_option}            option[3]
-${with_error}               error-msg
-${without_error}            error-msg invisible
+${with_error}               error-msg no-margin
+${without_error}            error-msg no-margin invisible
 @{option_id_list}=          forex_trading_experience
 ...                         forex_trading_frequency
 ...                         indices_trading_experience
@@ -51,11 +51,12 @@ Verify each field
     [Arguments]  ${error}
     sleep  5
     : FOR  ${i}  IN  @{option_id_list}
-    \   Page should contain element   xpath=//*[@class="${error}"] //preceding::select[@id="${i}"]
+    #\   Page should contain element   xpath=//*[@class="${error}"] //preceding::select[@id="${i}"]
+    \   Page should contain element   xpath=//*[contains(@class,'${error}')] //preceding::select[@id="${i}"]
     \   Run keyword if  "${error}"=="${with_error}"
-        ...   element text should be         //div[@class="error-msg"]        This field is required.
+        ...   element text should be          //*[contains(@class,'error-msg no-margin')]     This field is required.
         ...   ELSE
-        ...   element text should be         //div[@class="error-msg invisible"]    ${EMPTY}
+        ...   element text should be          //*[contains(@class,'error-msg no-margin invisible')]    ${EMPTY}  
 
 
 Verify successful message appears
