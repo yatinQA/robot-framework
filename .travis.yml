@@ -9,7 +9,7 @@ cache:
   - $HOME/.m2
       
 script: 
- - robot testcases/checkOldBrowser.robot
+ - robot testcases/*.robot
 
 before_install:
  - sudo apt-get update

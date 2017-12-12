@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     A test suite with a single test for checking Older browser
+Documentation     A test suite with a single test for checking Older browsers
 ...
 Resource          ../common/setup.robot
 Library           Selenium2Library
@@ -12,6 +12,7 @@ Force Tags       BrowserStack
 ${Chrome}      (Chrome 49)
 ${Firefox}     (Firefox 51)
 ${Safari}      (Safari 8)
+#we are unable to check opera because of its not available in Automate browser.
 ${Opera}       (Opera 41)
 ${IE11}        (Internet Explorer 11)
 
@@ -20,7 +21,7 @@ ${IE11}        (Internet Explorer 11)
 Check warning message
 
     wait until page contains    The easiest way to get started in the financial markets     10
-     [Arguments]      ${browser}
+    [Arguments]      ${browser}
     page should contain      Your web browser ${browser} is out of date and may affect your trading experience. Proceed at your own risk.
 
 
