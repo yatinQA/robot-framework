@@ -24,34 +24,35 @@ Verify the page is loaded successfuly
 
     wait until element is visible           xpath=//*[@id="content"]/div[3]/h1
     wait until element is visible           xpath=//*[@id="content"]
-    wait until element is visible           xpath=//*[@id="frm_change_password"]/fieldset/div[4]/div/div[2]/p/span[2]
-    wait until element is visible           xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/div[1]
+    #wait until element is visible           xpath=//*[@id="frm_change_password"]/fieldset/div[4]/div/div[2]/p/span[2]
+    wait until element is visible           id=old_password
+    #wait until element is visible           xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/div[1]
 Verify required fields
 
     click button              xpath=//*[@id="btn_submit"]
-    element text should be    xpath=//*[@id="frm_change_password"]/fieldset/div[1]/div[2]/div                   ${REQUIRED_FIELD_MSG}
-    element text should be    xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/div[2]                ${REQUIRED_FIELD_MSG}
-    element text should be    xpath=//*[@id="frm_change_password"]/fieldset/div[3]/div[2]/div                   ${REQUIRED_FIELD_MSG}
+    element text should be    xpath=//*[@id="frm_change_password"]/fieldset/div[1]/div[2]/p                   ${REQUIRED_FIELD_MSG}
+    element text should be    xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/p[2]                ${REQUIRED_FIELD_MSG}
+    element text should be    xpath=//*[@id="frm_change_password"]/fieldset/div[3]/div[2]/p                   ${REQUIRED_FIELD_MSG}
 
 Verify invalid input
 
     input text                      old_password                                                                ${MIN_INPUT}
-    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[1]/div[2]/div             ${MIN_INPUT_MSG}
+    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[1]/div[2]/p             ${MIN_INPUT_MSG}
     clear element text              old_password
     input text                      new_password                                                                ${MIN_INPUT}
-    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/div[2]          ${MIN_INPUT_MSG}
+    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/p[2]          ${MIN_INPUT_MSG}
     clear element text              new_password
     input text                      new_password                                                                 ${INV_INPUT}
-    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/div[2]           ${PASS_REQUIREMENT_MSG}
+    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/p[2]           ${PASS_REQUIREMENT_MSG}
     clear element text              new_password
     input text                      old_password                                                                 ${VALID_PASS}
     input text                      new_password                                                                 ${VALID_PASS}
-    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/div[2]           ${SAME_PASSWORD_MSG}
+    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[2]/div[2]/p[2]           ${SAME_PASSWORD_MSG}
     clear element text              old_password
     clear element text              new_password
     input text                      new_password                                       ${VALID_PASS}
     input text                      repeat_password                                    ${MIN_INPUT}
-    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[3]/div[2]/div                                   ${UNMATCH_PASS_MSG}
+    element text should be          xpath=//*[@id="frm_change_password"]/fieldset/div[3]/div[2]/p                                   ${UNMATCH_PASS_MSG}
     clear element text              new_password
     clear element text              repeat_password
     input text                      old_password                                        ${VALID_PASS}

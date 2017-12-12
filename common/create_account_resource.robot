@@ -90,11 +90,13 @@ Verify CR Real Money Account Opening Fields
     Scroll Page To Middle
     #leave all fields as blank for fields checking
     Click Element	xpath=//*[@id="frm_real"]/div/button
-    Xpath should match X Times     //div[@class="error-msg"]        10
-    element text should be         //div[@class="error-msg"]        This field is required.
-    element text should be         //*[@id="frm_real"]/fieldset[2]/div[6]/div[2]/div       You should enter 6-35 characters.
-    element text should be         //*[@id="frm_real"]/fieldset[4]/div[2]/div        Please confirm that you are not a politically exposed person.
-    element text should be         //*[@id="frm_real"]/div/div/div/div        Please accept the terms and conditions.
+    Xpath should match X Times     //*[contains(@class,'error-msg no-margin')]   10
+    #Xpath should match X Times     //*[@class="error-msg"]        10
+    #element text should be         //*[@class="error-msg"]        This field is required.
+    element text should be      //*[contains(@class,'error-msg no-margin')]    This field is required.
+    element text should be         //*[@id="frm_real"]/fieldset[2]/div[6]/div[2]/p       You should enter 6-35 characters.
+    element text should be         //*[@id="frm_real"]/fieldset[4]/div[2]/p        Please confirm that you are not a politically exposed person.
+    element text should be         //*[@id="frm_real"]/div/div/div/p        Please accept the terms and conditions.
 
 Set Birth Date
     [Arguments]  ${dob_year}   ${dob_month}
