@@ -48,7 +48,7 @@ Contract Lost
 
 
 *** Test Cases ***
-Buy vol contract
+Buy touch or no touch contract
     [Tags]  Long contract test
     Open xvfb browser then login
     Switch Virtual Account
