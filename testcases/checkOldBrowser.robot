@@ -62,7 +62,7 @@ Verifiy message in IE
 
 verify page is working in IOS 10
 
-    open binary site  DEVICE=iPhone 7  REALDEVICE=true    OS_VERSION=10.0
+    open binary site in a device  DEVICE=iPhone 7  REALDEVICE=true    OS_VERSION=10.0
     sleep    ${Delay}
     check home page
     [Teardown]    Close Browser
