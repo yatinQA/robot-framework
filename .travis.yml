@@ -3,7 +3,7 @@ language:
  - java
  - android
 jdk: oraclejdk8
-dist: precise 
+#dist: precise 
 
 android:
   components:
@@ -28,7 +28,7 @@ script:
 
 before_install:
  - sudo apt-get update
-# - sudo apt-get install chromium-chromedriver 
+ - sudo apt-get install chromium-chromedriver 
  - sudo apt-get install -y libnss3 libgconf-2-4
  - sudo python -m pip install robotframework
  - sudo pip install --upgrade --pre robotframework-selenium2library
@@ -48,10 +48,10 @@ install:
   - "npm install -g appium"
  
 before_script:
-#  - "export PATH=$PATH:/usr/lib/chromium-browser/:/home/linuxbrew/.linuxbrew/bin"
-#  - "export DISPLAY=:99.0"
-#  - "sh -e /etc/init.d/xvfb start"
-#  - sleep 3 # give xvfb some time to start
+  - "export PATH=$PATH:/usr/lib/chromium-browser/:/home/linuxbrew/.linuxbrew/bin"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
   - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
