@@ -1,20 +1,30 @@
 sudo: required
-language: java
+language: 
+ - java
+ - android
+jdk: oraclejdk8
 dist: trusty
 
-
+android:
+  components:
+    - platform-tools
+    - tools
+    - build-tools-24.0.2
+    - android-22
+    - android-24
+    - sys-img-armeabi-v7a-android-22
+    - extra-android-m2repository
 
 cache:
   directories:
   - $HOME/.m2
       
 script:
- - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then  robot testcases/*.robot; fi'
- - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then robot -e BrowserStack  testcases/*.robot; fi'
-
-
-
-
+# - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then  robot testcases/*.robot; fi'
+# - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then robot -e BrowserStack  testcases/*.robot; fi'
+ - "appium &"
+ - "sleep 8s"
+ - "robot testcases/MovieAppTest.robot"
 
 before_install:
  - sudo apt-get update
@@ -22,13 +32,30 @@ before_install:
  - sudo apt-get install -y libnss3 libgconf-2-4
  - sudo python -m pip install robotframework
  - sudo pip install --upgrade --pre robotframework-selenium2library
+ - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+ - sudo apt-get install build-essential
+ - echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.bash_profile
+ - echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' >>~/.bash_profile
+ - echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' >>~/.bash_profile
+ - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+ - brew install gcc
+ - brew install hello
+ - brew install node
+
+install: 
+  - "sudo pip install 'requests[security]'"
+  - "sudo pip install robotframework-appiumlibrary" 
+  - "npm install -g appium"
  
 before_script:
   - "export PATH=$PATH:/usr/lib/chromium-browser/"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
-
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
   
 after_script:
   - cat target/surefire-reports/TestSuite.txt
