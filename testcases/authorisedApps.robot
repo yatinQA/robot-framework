@@ -43,6 +43,7 @@ Login after revoke
     Input Username	${VALID USER}
     Input Password	${VALID PASSWORD}
     Submit Credentials
+    sleep       8
     page should contain          Review Permissions
     grant permission
     Wait Until Page Contains	Portfolio   10
