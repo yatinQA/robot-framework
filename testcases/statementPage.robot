@@ -42,6 +42,7 @@ Verify recent bought contract added in statement page
     wait until element is enabled   sell_at_market
     Click button  xpath=//*[@id="sell_at_market"]
     Wait Until Page Contains  You have sold this contract   10
+    sleep       10
     ${REFF_ID_AFTER_SOLD}      get text  xpath=//*[@id="trade_details_ref_id"]
     ${CONTRACT_SOLD_REF_ID}       fetch from right    ${REFF_ID_AFTER_SOLD}  -${space}
     strip string  ${CONTRACT_SOLD_REF_ID}
@@ -58,6 +59,7 @@ Verify recent sold contract added in statement page
     ${BUY_REF_ID}        GET TEXT   xpath=//*[@id="statement-table"]/tbody/tr[contains(.,"${CONTRACT_REF_ID}")]/td[2]/span
     ${SELL_REF_ID}       GET TEXT   xpath=//*[@id="statement-table"]/tbody/tr[contains(.,"${CONTRACT_SOLD_REF_ID}")]/td[2]/span
     should not be equal     ${BUY_REF_ID}       ${SELL_REF_ID}
+    capture page screenshot
     ${CREDIT_AMOUNT}       get text    xpath=//*[@id="statement-table"]/tbody/tr[contains(.,"${CONTRACT_SOLD_REF_ID}")]/td[6]
     should be equal      ${SELL_PRICE}          ${CREDIT_AMOUNT}
 
@@ -94,5 +96,5 @@ Check Statement Page
     verify the page is loaded successfuly
     verify recent bought contract added in statement page
     verify recent sold contract added in statement page
-    capture page screenshot         screenshots/statementPage.png
+    capture page screenshot
     [Teardown]    Close Browser

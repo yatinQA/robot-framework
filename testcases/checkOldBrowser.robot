@@ -25,6 +25,15 @@ Check warning message
     page should contain      Your web browser ${browser} is out of date and may affect your trading experience. Proceed at your own risk.
 
 
+Check home page
+
+    wait until page contains        Log in
+    wait until element is visible   xpath=//*[@id="btn_login"]
+    click element                   xpath=//*[@id="mobile-menu-icon"]
+    element should be visible       xpath=//*[@id="mm-m0-p0"]/li[1]/a
+    element should be visible       mobile-menu
+
+
 *** Test Cases ***
 Verify message in Old Firefox
     Open Binary Site    BROWSER=Firefox  BROWSER_VERSION=51.0  OS=Windows  OS_VERSION=10
@@ -50,3 +59,10 @@ Verifiy message in IE
     check warning message    ${IE11}
     [Teardown]    Close Browser
 
+
+verify page is working in IOS 10
+
+    open binary site in a device  DEVICE=iPhone 7  REALDEVICE=true    OS_VERSION=10.0   BROWSER=iPhone
+    sleep    ${Delay}
+    check home page
+    [Teardown]    Close Browser
