@@ -8,8 +8,13 @@ cache:
   directories:
   - $HOME/.m2
       
-script: 
- - robot testcases/*.robot
+script:
+ - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then  robot testcases/*.robot; fi'
+ - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then robot -e BrowserStack  testcases/*.robot; fi'
+
+
+
+
 
 before_install:
  - sudo apt-get update
