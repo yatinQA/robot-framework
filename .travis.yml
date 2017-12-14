@@ -3,7 +3,9 @@ language:
  - java
  - android
 jdk: oraclejdk8
-dist: trusty
+dist: 
+ - trusty
+ - precise
 
 android:
   components:
