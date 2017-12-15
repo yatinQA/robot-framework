@@ -6,7 +6,7 @@ ${REMOTE_URL}     http://localhost:4723/wd/hub
 ${PLATFORM_NAME}    Android
 ${PLATFORM_VERSION}    5.1.1
 ${DEVICE_NAME}    emulator-5554
-${APP}             ../apk/moviesapp.apk
+${APP}             ${CURDIR}/../apk/moviesapp.apk
 ${DELAY_TIME}   2s
 ${PACKAGE_NAME}     com.example.android.popularmoviesstage1
 
