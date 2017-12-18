@@ -81,6 +81,29 @@ Buy Asians Contract
     Wait Until Page Contains	This contract	60
     [Return]    ${tick_value}
 
+Buy a Digit Contract
+
+    # To purchase Touches contract
+    [Arguments]     ${duration_value}   ${duration_unit}    ${barrier_value}
+    Set global variable     ${duration_value}
+    Set global variable     ${duration_unit}
+    Set global variable     ${barrier_value}
+    Click element   xpath=//*[@id="contract_form_name_nav"]/li[5]/a
+    Wait Until Page Contains   Last Digit Prediction
+    # set duration
+    Select From List	id=duration_units	${duration_unit}
+    Wait Until Page Contains Element    id = spot
+    Input Text  id = duration_amount  ${duration_value}
+    Wait Until Page Contains Element    id = spot
+    # set barrier
+    Sleep   2
+    select from list  id = prediction  ${barrier_value}
+    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         5
+    Wait Until Page Contains Element    id = spot
+    Click element   id = purchase_button_top
+    Wait Until Page Contains	This contract	60
+    [Return]    ${duration_value}   ${duration_unit}    ${barrier_value}
+
 
 Verify Profit Lost Amount
 # This is to verify the Profit/Loss amount in Contract information page
@@ -109,6 +132,7 @@ Verify Tick Contract Result
     ${final_price}=	Get Substring	${final_price}	0
 
     ${profit_lost_evaluate}=	Evaluate	${final_price} - ${buy_price}
+    ${profit_lost_evaluate}=	Evaluate      "%.2f" % ${profit_lost_evaluate}
     Set Global Variable		${profit_lost_evaluate}
     ${status}=	Evaluate	${final_price} > ${buy_price}
 
