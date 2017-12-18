@@ -18,7 +18,6 @@ Library           DateTime
 
 *** Test Cases ***
 Buy asian contract
-    [Tags]  Long contract test
     Open xvfb browser then login
     Switch Virtual Account
     Choose Underlying    volidx  R_10
