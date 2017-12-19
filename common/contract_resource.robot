@@ -11,8 +11,8 @@ Library           Selenium2Library
 ${duration_value}
 ${duration_unit}
 ${barrier_value}
-${higher_barrier_offset}
-${lower_barrier_offset}
+${high_barrier}
+${low_barrier}
 ${profit_lost_evaluate}
 ${tick_value}
 ${status}
@@ -69,6 +69,41 @@ Buy Touch No Touch Contract
     Wait Until Page Contains	Contract Confirmation	10
     Count contract waiting time
     [Return]    ${duration_value}   ${duration_unit}    ${barrier_value}
+
+
+Buy Stay In Goes Out Contract
+# To purchase Touches contract
+    [Arguments]     ${duration_value}   ${duration_unit}    ${high_barrier}     ${low_barrier}
+    Set global variable     ${duration_value}
+    Set global variable     ${duration_unit}
+    Set global variable     ${high_barrier}
+    Set global variable     ${low_barrier}
+    Click element   xpath = //*[@menuitem="endsinout"]
+    Click element   id = staysinout
+    Wait Until Page Contains    High barrier offset
+    # set duration
+    Select From List	id=duration_units	${duration_unit}
+    Wait Until Page Contains Element    id = spot
+    Input Text  id = duration_amount  ${duration_value}
+    Wait Until Page Contains Element    id = spot
+    # set barrier
+    Input Text  id = barrier_high  ${high_barrier}
+    Sleep   2
+    Wait Until Page Contains Element    id = indicative_high_barrier_tooltip
+    Input Text  id = barrier_low  ${low_barrier}
+    Sleep   2
+    Wait Until Page Contains Element    id = indicative_low_barrier_tooltip
+    # set payout
+    Input Text  id = amount  20
+    Sleep   2
+    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         5
+    Wait Until Page Contains Element    id = spot
+    # purchase ends between
+    Click element   id = purchase_button_top
+    Wait Until Page Contains	Contract Confirmation	10
+    Count contract waiting time
+    [Return]    ${duration_value}   ${duration_unit}    ${high_barrier}     ${low_barrier}
+
 
 Buy Asians Contract
 # To purchase Asian Up contract
