@@ -80,7 +80,7 @@ Buy Asians Contract
     Input Text  id = duration_amount   ${tick_value}
     Sleep   5
     # purchase Asian Up
-    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         10
+    #Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         10
     Wait Until Page Contains Element    id = spot
     Click element   id = purchase_button_top
     Wait Until Page Contains	Contract Confirmation	10
