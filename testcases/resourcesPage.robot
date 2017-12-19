@@ -273,16 +273,16 @@ verify Indices-OTC assets is correct
     \   ${ACTUAL_MARKKET}=    Get Text        xpath=//*[@id="Indices-4"]/tbody/tr[${i}]/td[1]
     \    Append To List   ${ACTUAL_MARKKETS}    ${ACTUAL_MARKKET}
     ${EXPECTED_MARKET}      create list         Australian OTC Index
-                                                ...     Belgian OTC Index
-                                                ...     Bombay OTC Index
+                                                #...     Belgian OTC Index
+                                                #...     Bombay OTC Index
                                                 ...     Dutch OTC Index
                                                 ...     French OTC Index
                                                 ...     German OTC Index
-                                                ...     Hong Kong OTC Index
-                                                ...     Istanbul OTC Index
+                                                #...     Hong Kong OTC Index
+                                                #...     Istanbul OTC Index
                                                 ...     Japanese OTC Index
                                                 ...     US OTC Index
-                                                ...     US Tech OTC Index
+                                                #...     US Tech OTC Index
                                                 ...     Wall Street OTC Index
     log      ${ACTUAL_MARKKETS}
     lists should be equal  ${ACTUAL_MARKKETS}    ${EXPECTED_MARKET}

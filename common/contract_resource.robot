@@ -62,8 +62,8 @@ Buy Touch No Touch Contract
     Wait Until Page Contains Element    id = spot
     # set barrier
     Input Text  id = barrier  ${barrier_value}
-    Sleep   2
-    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         5
+    Sleep   5
+    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         10
     Wait Until Page Contains Element    id = spot
     Click element   id = purchase_button_top
     Wait Until Page Contains	Contract Confirmation	10
@@ -78,9 +78,9 @@ Buy Asians Contract
     Wait Until Page Contains    asian up
     # set duration
     Input Text  id = duration_amount   ${tick_value}
-    Sleep   2
+    Sleep   5
     # purchase Asian Up
-    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         5
+    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         10
     Wait Until Page Contains Element    id = spot
     Click element   id = purchase_button_top
     Wait Until Page Contains	Contract Confirmation	10
@@ -106,9 +106,9 @@ Buy a Digit Contract
     Input Text  id = duration_amount  ${duration_value}
     Wait Until Page Contains Element    id = spot
     # set barrier
-    Sleep   2
+    Sleep   5
     select from list  id = prediction  ${barrier_value}
-    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         5
+    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         10
     Wait Until Page Contains Element    id = spot
     Click element   id = purchase_button_top
     Wait Until Page Contains	This contract	60
@@ -132,7 +132,7 @@ Buy a Digit-Even/Odd Contract
     Wait Until Page Contains Element    id = spot
     Input Text  id = duration_amount  ${duration_value}
     clear element text   id = duration_amount
-    sleep  1
+    sleep  5
     Input Text  id = duration_amount  ${duration_value}
     #clear element text    id = amount
     #sleep  1
@@ -140,7 +140,7 @@ Buy a Digit-Even/Odd Contract
     Wait Until Page Contains Element    id = spot
     # set barrier
     Sleep   2
-    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         5
+    Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         10
     Wait Until Page Contains Element    id = spot
     Click element   id = purchase_button_top
     Wait Until Page Contains	This contract	60
