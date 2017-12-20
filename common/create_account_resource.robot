@@ -209,6 +209,8 @@ Input Fields for MF Real Money Account Opening
     press key   id=chk_professional  \\09
     press key   id=professional_info_toggle   \\09
     Select Checkbox	tnc
+    #press key   //*[@id="financial-form"]/div/div/div/label/a   \\09
+
 
 Create Standard Real Money Account
     select radio button     account_type    account_type_default

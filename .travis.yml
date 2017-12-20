@@ -10,8 +10,8 @@ cache:
       
 script:
  - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then  robot testcases/*.robot; fi'
- - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then robot -e BrowserStack  testcases/*.robot; fi'
-
+ #- 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then robot -e BrowserStack  testcases/*.robot; fi'
+ - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then robot -e BrowserStack  testcases/create_account_mf.robot; fi'
 
 
 

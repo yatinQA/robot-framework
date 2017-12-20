@@ -23,6 +23,7 @@ Create MF Account
     set global variable   ${first_name}     test-mf-${random_first_name}
     Sleep   5
     Input Fields for MF Real Money Account Opening		${first_name}
+    Execute Javascript window.scrollTo(0,2850);
     click element   xpath=//*[@id="financial-form"]/div/button
     Sleep  5
     Page Should Contain   Sorry, you are too young to open an account
@@ -32,6 +33,7 @@ Create MF Account
     Sleep  10
     Set Birth Date   1983  Jul
     press key   id=tnc   \\09
+    Execute Javascript window.scrollTo(0,2850);
     Click Element	xpath=//*[@id="financial-form"]/div/button
     Sleep  5
     click element   xpath=//*[@id="financial-risk"]/fieldset/div/p[4]/button
@@ -41,6 +43,6 @@ Create MF Account
     click element   xpath=//*[@id="reality_check_nav"]/button
     Page Should Contain    You have successfully created your account!
     capture page screenshot   screenshots/create_MF_acc.png
-    Set Currency   ${currency_fiat}
+    #Set Currency   ${currency_fiat}
     wait until page contains  Investment Account   30
     [Teardown]    Close Browser
