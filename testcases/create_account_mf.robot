@@ -23,7 +23,7 @@ Create MF Account
     set global variable   ${first_name}     test-mf-${random_first_name}
     Sleep   5
     Input Fields for MF Real Money Account Opening		${first_name}
-    Execute Javascript window.scrollTo(0,2850);
+    Execute Javascript  window.scrollTo(0,2850);
     click element   xpath=//*[@id="financial-form"]/div/button
     Sleep  5
     Page Should Contain   Sorry, you are too young to open an account
@@ -33,7 +33,7 @@ Create MF Account
     Sleep  10
     Set Birth Date   1983  Jul
     press key   id=tnc   \\09
-    Execute Javascript window.scrollTo(0,2850);
+    Execute Javascript  window.scrollTo(0,2850);
     Click Element	xpath=//*[@id="financial-form"]/div/button
     Sleep  5
     click element   xpath=//*[@id="financial-risk"]/fieldset/div/p[4]/button
