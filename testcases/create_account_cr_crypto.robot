@@ -27,8 +27,9 @@ Create Crypto Accounts
     wait until page contains  Create New Account   30
     reload page
     wait until element is visible   xpath=//*[@id="new_account_opening"]/td[4]/button   60
-    Run keyword if  "${crypto_currency}"!="LTC"
-    ...   Select From List	id=new_account_currency   ${crypto_currency}
+    #Run keyword if  "${crypto_currency}"!="LTC"
+    #...   Select From List	id=new_account_currency   ${crypto_currency}
+    Select From List	id=new_account_currency   ${crypto_currency}
     sleep  5
     wait until element is visible   xpath=//*[@id="new_account_opening"]/td[4]/button   60
     Click Element  xpath=//*[@id="new_account_opening"]/td[4]/button
