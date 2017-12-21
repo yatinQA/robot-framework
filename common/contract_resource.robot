@@ -118,8 +118,10 @@ Buy Asians Contract
     #Wait Until Page Contains Element    xpath=//*[@class="contract_purchase button"]         10
     Wait Until Page Contains Element    id = spot
     Click element   id = purchase_button_top
+    sleep  5
     Wait Until Page Contains	Contract Confirmation	10
-    Wait Until Page Contains	This contract	60
+    sleep       5
+    Wait Until Page Contains	This contract	75
     [Return]    ${tick_value}
 
 Buy a Digit Contract
