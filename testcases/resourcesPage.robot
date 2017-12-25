@@ -15,14 +15,14 @@ Library            Collections
 Navigate to trading times
 
     Navigate to resources page
-    wait until element is visible   xpath= //*[@id="content"]/div[3]/div/div[2]/div[1]/a     10
-    click element                   xpath= //*[@id="content"]/div[3]/div/div[2]/div[1]/a
+    wait until element is visible   xpath= //*[@id="content"]/div[2]/div/div[2]/div[1]/a     10
+    click element                   xpath= //*[@id="content"]/div[2]/div/div[2]/div[1]/a
 
 Navigate to Asset Index Page
 
     Navigate to resources page
-    wait until element is visible   xpath=//*[@id="content"]/div[3]/div/div[1]/div[1]/a
-    click element                   xpath=//*[@id="content"]/div[3]/div/div[1]/div[1]/a
+    wait until element is visible   xpath=//*[@id="content"]/div[2]/div/div[1]/div[1]/a
+    click element                   xpath=//*[@id="content"]/div[2]/div/div[1]/div[1]/a
 
 Verify asset index page is loaded successfuly
 
