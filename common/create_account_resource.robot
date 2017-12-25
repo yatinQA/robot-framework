@@ -114,7 +114,7 @@ Create Virtual Account
     Click Element   id=btn_verify_email
     Sleep  5
     Wait Until Page Contains   Thank you for signing up   30
-    execute javascript      document.getElementById('close_ico_banner').click()
+    #execute javascript      document.getElementById('close_ico_banner').click()
     Retrieve Token
     Input Text    client_password   ${user_password} 
     Input Text    repeat_password   ${user_password}
