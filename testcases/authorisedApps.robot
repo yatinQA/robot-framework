@@ -35,7 +35,7 @@ Verify revoke
 Login after revoke
     Open Browser    ${HOME URL}    ${BROWSER}
     Go To   ${HOME URL}
-    execute javascript      document.getElementById('close_ico_banner').click()
+    #execute javascript      document.getElementById('close_ico_banner').click()
     wait until element is visible  btn_login
     Click Link	btn_login
     Set Selenium Speed    ${DELAY}
