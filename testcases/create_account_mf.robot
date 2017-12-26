@@ -17,7 +17,7 @@ ${currency_fiat}      EUR
 Create MF Account
     Prepare Endpoint Environment
     Create Virtual Account  ${country_id}
-    Create Standard Real Money Account
+    #Create Standard Real Money Account
     Wait Until Page Contains	Family name   30
     ${random_first_name}=	Generate Random String	5	[LETTERS]
     set global variable   ${first_name}     test-mf-${random_first_name}

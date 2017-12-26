@@ -27,7 +27,7 @@ Create MX Account
 	#click open a real account
     #Click Element	xpath=//*[@id="topbar-msg"]/a/span
 
-    Create Standard Real Money Account
+    #Create Standard Real Money Account
     Wait Until Page Contains	Family name   30
     ${random_first_name}=	Generate Random String	5	[LETTERS]
     set global variable   ${first_name}     test-mx-${random_first_name}
