@@ -23,7 +23,31 @@ ${address_city}		Abc City
 ${address_postcode}     45678
 ${phone}	      	+62456787612
 ${secret_answer}	test answer
+${tax_id}           12345612
 ${row}              2
+
+@{financial_info_list}=     forex_trading_experience
+...                         forex_trading_frequency
+...                         indices_trading_experience
+...                         indices_trading_frequency
+...                         commodities_trading_experience
+...                         commodities_trading_frequency
+...                         stocks_trading_experience
+...                         stocks_trading_frequency
+...                         other_derivatives_trading_experience
+...                         other_derivatives_trading_frequency
+...                         other_instruments_trading_experience
+...                         other_instruments_trading_frequency
+...                         income_source
+...                         employment_status
+...                         employment_industry
+...                         occupation
+...                         source_of_wealth
+...                         education_level
+...                         net_income
+...                         estimated_worth
+...                         account_turnover
+${financial_options}        option[2]
 
 *** Keywords ***
 Scroll Page To Middle
@@ -67,6 +91,20 @@ Retrieve Token
     ${registration_url} =	Set Variable   ${token_url}${token}
     Go To   ${registration_url}
 
+Answer Financial Information
+    : FOR  ${i}  IN  @{financial_info_list}
+    \   Click element   xpath=//*[@id="${i}"]/${financial_options}
+    #press tab
+    press key   xpath= //*[@id="account_turnover"]  \\09
+
+Professional Request
+    select checkbox  chk_professional
+    wait until page contains element   xpath=//*[@id="btn_accept"]/span  10
+    sleep   10
+    click element    xpath=//*[@id="btn_accept"]/span
+    Press Key	xpath=//*[@id="btn_accept"]/span	 \\13
+    #choose ok on next confirmation
+
 Create Virtual Account 
     [Arguments]  ${country_id}
 
@@ -75,15 +113,15 @@ Create Virtual Account
     Input Text    email   ${email_id}
     Click Element   id=btn_verify_email
     Sleep  5
-    Wait Until Page Contains   Thank you for signing up 
-    execute javascript      document.getElementById('close_ico_banner').click()
+    Wait Until Page Contains   Thank you for signing up   30
+    #execute javascript      document.getElementById('close_ico_banner').click()
     Retrieve Token
     Input Text    client_password   ${user_password} 
     Input Text    repeat_password   ${user_password}
     Wait Until Element Contains   id=residence   id
     Select From List	id=residence   ${country_id}
     Click Element	xpath=//*[@id="virtual-form"]/div/button
-    wait until page contains    Open a Real Account   60
+    wait until page contains    Open a    60
     page should contain    You're using a Virtual Account
 
 Verify CR Real Money Account Opening Fields
@@ -150,6 +188,29 @@ Input Fields for MX Real Money Account Opening
     Scroll Page To Middle
     Select Checkbox	not_pep
     Select Checkbox	tnc
+
+Input Fields for MF Real Money Account Opening
+    [Arguments]  ${first_name}
+    Input Text	first_name    ${first_name}
+    Input Text	last_name     ${last_name}
+    ${elem}=   Get Value   last_name
+    #get birth date equal to current date minus 30 days to verify age so that we get error too young to open account
+    ${birth_date}=   Get Current Date	local    -30 days   %d %b, %Y
+    Execute JavaScript  document.getElementById('date_of_birth').value='${birth_date}'
+    Select From List	id=account_opening_reason	${account_opening_reason}
+    input text   tax_identification_number   ${tax_id}
+    Input Text	address_line_1	${address_line_1}
+    Input Text  address_city	${address_city}
+    Input Text	phone	${phone}
+    Input Text 	secret_answer 	${secret_answer}
+    Answer Financial Information
+    Select Checkbox	not_pep
+    #Professional Request
+    press key   id=chk_professional  \\09
+    press key   id=professional_info_toggle   \\09
+    Select Checkbox	tnc
+    #press key   //*[@id="financial-form"]/div/div/div/label/a   \\09
+
 
 Create Standard Real Money Account
     select radio button     account_type    account_type_default

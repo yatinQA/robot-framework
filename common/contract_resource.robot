@@ -110,6 +110,7 @@ Buy Asians Contract
     [Arguments]     ${tick_value}
     Set global variable     ${tick_value}
     Click element   id = asian
+    Sleep   3
     Wait Until Page Contains    asian up
     # set duration
     Input Text  id = duration_amount   ${tick_value}
@@ -119,7 +120,8 @@ Buy Asians Contract
     Wait Until Page Contains Element    id = spot
     Click element   id = purchase_button_top
     Wait Until Page Contains	Contract Confirmation	10
-    Wait Until Page Contains	This contract	60
+    sleep       5
+    Wait Until Page Contains	This contract	75
     [Return]    ${tick_value}
 
 Buy a Digit Contract

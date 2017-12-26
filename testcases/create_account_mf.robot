@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation       A test suite with a single test for creating MLT account.
+Documentation       A test suite with a single test for creating MF account.
 ...
 ...                 This test has a workflow that is created using keywords in
 ...                 the imported resource file.
@@ -9,46 +9,40 @@ Library 	        OperatingSystem
 
 
 *** Variables ***
-${country}	          Belgium
-${country_id}		  be
+${country}	          Spain
+${country_id}		  es
 ${currency_fiat}      EUR
 
 *** Test Cases ***
-Create MLT Account
+Create MF Account
     Prepare Endpoint Environment
     Create Virtual Account  ${country_id}
-
-    #Click Link	btn_login
-    #Set Selenium Speed    ${DELAY}
-    #Login Page Should Be Open
-    #Valid Login With Email ID    test_qa_id_77@binary.com  Binary@1
-    #Wait Until Page Contains	Portfolio   30
-    #Wait Until Page Contains	Open a Real Account	30
-	#click open a real account
-    #Click Element	xpath=//*[@id="topbar-msg"]/a/span
-
     #Create Standard Real Money Account
     Wait Until Page Contains	Family name   30
     ${random_first_name}=	Generate Random String	5	[LETTERS]
-    set global variable   ${first_name}     test-mlt-${random_first_name}
+    set global variable   ${first_name}     test-mf-${random_first_name}
     Sleep   5
-    Input Fields for MX Real Money Account Opening		${first_name}
-    Click Element	xpath=//*[@id="frm_real"]/div/button
+    Input Fields for MF Real Money Account Opening		${first_name}
+    Execute Javascript  window.scrollTo(0,2850);
+    click element   xpath=//*[@id="financial-form"]/div/button
     Sleep  5
     Page Should Contain   Sorry, you are too young to open an account
 
     #Update birthdate to be able to open account
     Scroll Page To Top
-    Sleep  5
+    Sleep  10
     Set Birth Date   1983  Jul
-    Scroll Page To Middle
-    Click Element	xpath=//*[@id="frm_real"]/div/button
+    press key   id=tnc   \\09
+    Execute Javascript  window.scrollTo(0,2850);
+    Click Element	xpath=//*[@id="financial-form"]/div/button
     Sleep  5
+    click element   xpath=//*[@id="financial-risk"]/fieldset/div/p[4]/button
     wait until element is visible   xpath=//*[@id="${currency_fiat}"]   60
     #Reality Check
+    sleep  5
     click element   xpath=//*[@id="reality_check_nav"]/button
     Page Should Contain    You have successfully created your account!
-    capture page screenshot   screenshots/create_MLT_acc.png
-    Set Currency   ${currency_fiat}
-    wait until page contains  Gaming Account   30
+    capture page screenshot   screenshots/create_MF_acc.png
+    #Set Currency   ${currency_fiat}
+    wait until page contains  Investment Account   30
     [Teardown]    Close Browser

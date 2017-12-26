@@ -65,7 +65,8 @@ Verify Locked Cashier
     navigate to cashier page
     #wait until element is visible   xpath=//*[@id="content"]/div[2]/div[4]    10
     wait until page contains        Bank-wire, credit card, e-cash wallet   10
-    click element		     xpath=//*[@id="content"]/div[3]/div[4]/div/div[3]/div[2]/a/span
+    click element                   id = deposit_btn_cashier
+   # click element		     xpath=//*[@id="content"]/div[3]/div[4]/div/div[3]/div[2]/a/span
     #click element                   xpath=//*[@id="content"]/div[2]/div[4]/div/div[3]/div[2]/a/span
     wait until element is visible   xpath=//*[@id="cashier_locked_message"]
     element text should be          xpath=//*[@id="cashier_locked_message"]                                      ${CHECK_LOCKED_CASHIER_MSG}
