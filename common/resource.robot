@@ -24,6 +24,7 @@ ${VALID JP PASSWORD}  Abcd1234
 ${HOME URL}      https://staging.binary.com/en/home.html
 ${HOME URL JP}   https://staging.binary.com/ja/home-jp.html
 ${ENDPOINT URL}  https://staging.binary.com/en/endpoint.html
+${LOST_PASS_URL}  https://www.binary.com/en/home.html
 @{chrome_arguments}	--disable-infobars    --headless    --disable-gpu
 
 #THESE ARE GLOBAL VARIABLES
@@ -206,6 +207,18 @@ Open xvfb browser then login using JP account
     run keyword if   ${GRANT}!=1    Grant Permission
     Wait Until Page Contains	トレード   10
 
+open browser and then go to lost password page
+
+    open browser  ${lost_pass_url}     ${browser}
+    wait until element is visible       btn_login       10
+    click element            btn_login
+    page should contain element     lost-password
+    click element   lost-password
+    wait until page contains   Password reset   10
+    page should contain     Password reset
+    page should contain     To reset your password, enter the email address you used to create your account into the field below and click 'Reset password'.
+    element should be visible       email
+    element should be visible       btn_submit
 
 Open Login page in xvfb browser
 
